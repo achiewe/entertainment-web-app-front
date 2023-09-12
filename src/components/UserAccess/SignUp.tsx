@@ -123,6 +123,7 @@ const MainContainer = styled.div`
     .signInput {
       display: flex;
       flex-direction: column;
+      position: relative;
       width: 100%;
       gap: 24px;
 
@@ -131,6 +132,39 @@ const MainContainer = styled.div`
         flex-direction: column;
         gap: 18px;
         width: 100%;
+      }
+
+      .emailErr {
+        position: absolute;
+        right: 0;
+        color: #fc4747;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        top: 40px;
+      }
+
+      .passwordErr {
+        position: absolute;
+        right: 0;
+        color: #fc4747;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        top: 100px;
+      }
+
+      .repPasswordErr {
+        position: absolute;
+        right: 0;
+        color: #fc4747;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        bottom: -20px;
       }
     }
 
