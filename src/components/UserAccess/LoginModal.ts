@@ -5,5 +5,5 @@ export const userSchema = yup.object().shape({
     .string()
     .email("Please enter a valid email address")
     .required("Can't be empty"),
-  password: yup.string().min(4).max(10).required("Can't be empty"),
+  password: yup.string().required("Can't be empty"),
 });
