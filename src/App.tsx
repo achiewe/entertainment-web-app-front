@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import GlobalStyles from "./GlobalStyles";
+import Login from "./components/UserAccess/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -7,6 +8,10 @@ function App() {
     <Router>
       <MainContainer>
         <GlobalStyles />
+        <Routes>
+          <Route path="/" />
+          <Route path="/Login" element={<Login />} />
+        </Routes>
       </MainContainer>
     </Router>
   );
