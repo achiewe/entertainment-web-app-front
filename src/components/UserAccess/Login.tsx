@@ -25,6 +25,12 @@ const Login = (): JSX.Element => {
             <hr />
           </label>
         </div>
+        <div className="buttonDiv">
+          <button type="submit"> Login to your account</button>
+          <p>
+            Don’t have an account? <span> Sign Up</span>
+          </p>
+        </div>
       </div>
     </MainLogin>
   );
@@ -88,6 +94,52 @@ const MainLogin = styled.div`
         flex-direction: column;
         gap: 18px;
         width: 100%;
+      }
+    }
+
+    .buttonDiv {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 24px;
+      button {
+        width: 100%;
+        height: 48px;
+        border-radius: 6px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fc4747;
+        color: #ffffff;
+        text-align: center;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        cursor: pointer;
+      }
+
+      p {
+        color: #ffffff;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+
+        span {
+          color: #fc4747;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+          cursor: pointer;
+        }
+
+        span:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
