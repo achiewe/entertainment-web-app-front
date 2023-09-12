@@ -1,13 +1,22 @@
 import styled from "styled-components";
 import logoSvg from "../../../public/assets/logo.svg";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { userSchema } from "./UserValidation";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const Login = (): JSX.Element => {
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(userSchema),
+  });
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
   return (
     <MainLogin>
       <img src={logoSvg} alt="logo icon" />
-      <div className="loginCont">
+      <form onSubmit={handleSubmit(onSubmit)} className="loginCont">
         <h2> Login</h2>
         <div className="loginInput">
           <label>
@@ -15,6 +24,7 @@ const Login = (): JSX.Element => {
               className="inputEmail"
               type="email"
               placeholder="Email address"
+              {...register("email")}
             />
             <hr />
           </label>
@@ -23,6 +33,7 @@ const Login = (): JSX.Element => {
               className="inputPassword"
               type="password"
               placeholder="Password"
+              {...register("password")}
             />
             <hr />
           </label>
@@ -33,7 +44,7 @@ const Login = (): JSX.Element => {
             Don’t have an account? <Link to="/SignUp"> Sign Up</Link>
           </p>
         </div>
-      </div>
+      </form>
     </MainLogin>
   );
 };
