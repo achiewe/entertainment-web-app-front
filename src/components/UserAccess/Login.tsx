@@ -2,7 +2,7 @@ import styled from "styled-components";
 import logoSvg from "../../../public/assets/logo.svg";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { userSchema } from "./UserValidation";
+import { userSchema } from "./LoginModal";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 interface TypeLogin {
