@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" />
           <Route path="/Login" element={<Login />} />
+          <Route path="/SignUp" />
         </Routes>
       </MainContainer>
     </Router>

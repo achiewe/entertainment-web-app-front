@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import logoSvg from "../../../public/assets/logo.svg";
+import { Link } from "react-router-dom";
 
 const Login = (): JSX.Element => {
   return (
@@ -28,7 +29,7 @@ const Login = (): JSX.Element => {
         <div className="buttonDiv">
           <button type="submit"> Login to your account</button>
           <p>
-            Don’t have an account? <span> Sign Up</span>
+            Don’t have an account? <Link to="/SignUp"> Sign Up</Link>
           </p>
         </div>
       </div>
@@ -128,16 +129,17 @@ const MainLogin = styled.div`
         font-weight: 300;
         line-height: normal;
 
-        span {
+        a {
           color: #fc4747;
           font-size: 15px;
           font-style: normal;
           font-weight: 300;
           line-height: normal;
           cursor: pointer;
+          text-decoration: none;
         }
 
-        span:hover {
+        a:hover {
           text-decoration: underline;
         }
       }
