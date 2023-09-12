@@ -5,12 +5,21 @@ import { useForm } from "react-hook-form";
 import { userSchema } from "./UserValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+interface TypeLogin {
+  email: string;
+  password: string;
+}
+
 const Login = (): JSX.Element => {
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TypeLogin>({
     resolver: yupResolver(userSchema),
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: TypeLogin) => {
     console.log(data);
   };
   return (
@@ -26,6 +35,7 @@ const Login = (): JSX.Element => {
               placeholder="Email address"
               {...register("email")}
             />
+            <p className="errorEmail">{errors.email?.message} </p>
             <hr />
           </label>
           <label>
@@ -36,6 +46,7 @@ const Login = (): JSX.Element => {
               {...register("password")}
             />
             <hr />
+            <p className="errorPassword">{errors.password?.message} </p>
           </label>
         </div>
         <div className="buttonDiv">
@@ -99,8 +110,31 @@ const MainLogin = styled.div`
     .loginInput {
       display: flex;
       flex-direction: column;
+      position: relative;
       width: 100%;
       gap: 24px;
+
+      .errorEmail {
+        position: absolute;
+        right: 0;
+        color: #fc4747;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        bottom: 40px;
+      }
+
+      .errorPassword {
+        position: absolute;
+        right: 0;
+        color: #fc4747;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        bottom: -20px;
+      }
 
       label {
         display: flex;
