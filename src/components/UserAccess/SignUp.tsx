@@ -1,12 +1,32 @@
 import styled from "styled-components";
 import logoSvg from "../../../public/assets/logo.svg";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { SignUpSchema } from "./SignupModal";
+
+interface signProps {
+  email: string;
+  password: string;
+  repeatPassword: string;
+}
 
 const SignUp = (): JSX.Element => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<signProps>({
+    resolver: yupResolver(SignUpSchema),
+  });
+
+  const onSubmit = (data: signProps) => {
+    console.log(data);
+  };
   return (
     <MainContainer>
       <img src={logoSvg} alt="logo icon" />
-      <div className="signUpCont">
+      <form className="signUpCont" onSubmit={handleSubmit(onSubmit)}>
         <h2> Sign Up</h2>
         <div className="signInput">
           <label>
@@ -14,7 +34,9 @@ const SignUp = (): JSX.Element => {
               className="inputEmail"
               type="email"
               placeholder="Email address"
+              {...register("email")}
             />
+            <p className="emailErr">{errors.email?.message} </p>
             <hr />
           </label>
 
@@ -23,7 +45,9 @@ const SignUp = (): JSX.Element => {
               className="inputPassword"
               type="password"
               placeholder="Password"
+              {...register("password")}
             />
+            <p className="passwordErr">{errors.password?.message} </p>
             <hr />
           </label>
 
@@ -32,7 +56,9 @@ const SignUp = (): JSX.Element => {
               className="inputPassword"
               type="password"
               placeholder="Repeat Password"
+              {...register("repeatPassword")}
             />
+            <p className="repPasswordErr">{errors.repeatPassword?.message} </p>
             <hr />
           </label>
         </div>
@@ -42,7 +68,7 @@ const SignUp = (): JSX.Element => {
             Alread have an account? <Link to="/Login"> Login</Link>
           </p>
         </div>
-      </div>
+      </form>
     </MainContainer>
   );
 };
