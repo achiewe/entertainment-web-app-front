@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import logoSvg from "../../../public/assets/logo.svg";
 import { Link } from "react-router-dom";
+import { userSchema } from "./UserValidation";
 
 const Login = (): JSX.Element => {
   return (
