@@ -79,7 +79,7 @@ const MainLogin = styled.div`
 
     input {
       width: 100%;
-      background-color: #161d2f;
+      background: none;
       border: none;
       outline: none;
       color: #ffffff;
@@ -88,6 +88,10 @@ const MainLogin = styled.div`
       font-weight: 300;
       line-height: normal;
       padding-left: 16px;
+
+      :focus {
+        outline: none;
+      }
     }
 
     hr {
