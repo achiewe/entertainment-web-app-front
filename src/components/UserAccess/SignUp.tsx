@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpSchema } from "./SignupModal";
 import axios from "axios";
 import { useState } from "react";
-import { string } from "yup";
 
 interface signProps {
   email: string;
@@ -62,9 +61,7 @@ const SignUp = (): JSX.Element => {
               {...register("email")}
             />
             <p className="emailErr">{errors.email?.message} </p>
-            <p className="errorEmail">
-              This email address is already registered
-            </p>
+            <p className="errorEmail">{errorMsg}</p>
             <hr />
           </label>
 
