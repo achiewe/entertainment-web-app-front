@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpSchema } from "./SignupModal";
 import axios from "axios";
 import { useState } from "react";
+import { string } from "yup";
 
 interface signProps {
   email: string;
@@ -48,7 +49,7 @@ const SignUp = (): JSX.Element => {
     produceUser();
   };
   return (
-    <MainContainer>
+    <MainContainer errorMsg={errorMsg}>
       <img src={logoSvg} alt="logo icon" />
       <form className="signUpCont" onSubmit={handleSubmit(onSubmit)}>
         <h2> Sign Up</h2>
@@ -61,6 +62,9 @@ const SignUp = (): JSX.Element => {
               {...register("email")}
             />
             <p className="emailErr">{errors.email?.message} </p>
+            <p className="errorEmail">
+              This email address is already registered
+            </p>
             <hr />
           </label>
 
@@ -97,7 +101,7 @@ const SignUp = (): JSX.Element => {
   );
 };
 
-const MainContainer = styled.div`
+const MainContainer = styled.div<{ errorMsg: string }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -167,6 +171,18 @@ const MainContainer = styled.div`
         font-weight: 300;
         line-height: normal;
         top: 40px;
+      }
+
+      .errorEmail {
+        position: absolute;
+        color: #fc4747;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        display: ${(props) => (props.errorMsg ? "block" : "none")};
+        top: 40px;
+        right: 0;
       }
 
       .passwordErr {
