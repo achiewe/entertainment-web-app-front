@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import logoSvg from "../../../public/assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpSchema } from "./SignupModal";
+import axios from "axios";
+import { useState } from "react";
 
 interface signProps {
   email: string;
@@ -12,6 +14,8 @@ interface signProps {
 }
 
 const SignUp = (): JSX.Element => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -20,8 +24,28 @@ const SignUp = (): JSX.Element => {
     resolver: yupResolver(SignUpSchema),
   });
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   const onSubmit = (data: signProps) => {
-    console.log(data);
+    const email = data.email;
+    const password = data.password;
+    const produceUser = async (): Promise<void> => {
+      try {
+        await axios.post("http://localhost:3000/Signup", {
+          email: email,
+          password: password,
+        });
+        navigate("/Login");
+      } catch (error) {
+        const fault = error as any;
+        if (fault.response && fault.response.status === 400) {
+          setErrorMsg("This email address is already registered");
+        } else {
+          console.log(error);
+        }
+      }
+    };
+    produceUser();
   };
   return (
     <MainContainer>

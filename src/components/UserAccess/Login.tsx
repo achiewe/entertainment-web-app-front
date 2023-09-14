@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { userSchema } from "./LoginModal";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
+import axios from "axios";
 
 interface TypeLogin {
   email: string;
@@ -24,9 +25,8 @@ const Login = (): JSX.Element => {
 
   const onSubmit = (data: TypeLogin) => {
     console.log(data);
-    const email = data.email;
-    const password = data.password;
   };
+
   return (
     <MainLogin>
       <img src={logoSvg} alt="logo icon" />
