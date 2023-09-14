@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { userSchema } from "./LoginModal";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
 
 interface TypeLogin {
   email: string;
@@ -19,8 +20,12 @@ const Login = (): JSX.Element => {
     resolver: yupResolver(userSchema),
   });
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   const onSubmit = (data: TypeLogin) => {
     console.log(data);
+    const email = data.email;
+    const password = data.password;
   };
   return (
     <MainLogin>
