@@ -21,7 +21,8 @@ const Login = (): JSX.Element => {
     resolver: yupResolver(userSchema),
   });
 
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorPassMsg, setErrorPassMsg] = useState("");
+  const [errorEmailMsg, setErrorEmailMsg] = useState("");
 
   const navigate = useNavigate();
 
@@ -40,9 +41,9 @@ const Login = (): JSX.Element => {
         const fault = error as any;
         if (fault.response && fault.response.status === 404) {
           console.log("invalid user");
-          setErrorMsg("Invalid password");
+          setErrorPassMsg("Invalid password");
         } else if (fault.response && fault.response.status === 400) {
-          setErrorMsg("Invalid email address");
+          setErrorEmailMsg("Invalid email address");
         } else {
           console.log(error);
         }
@@ -52,7 +53,7 @@ const Login = (): JSX.Element => {
   };
 
   return (
-    <MainLogin>
+    <MainLogin errorPassMsg={errorPassMsg} errorEmailMsg={errorEmailMsg}>
       <img src={logoSvg} alt="logo icon" />
       <form onSubmit={handleSubmit(onSubmit)} className="loginCont">
         <h2> Login</h2>
@@ -65,6 +66,8 @@ const Login = (): JSX.Element => {
               {...register("email")}
             />
             <p className="errorEmail">{errors.email?.message} </p>
+            <p className="errorEmailMess"> {errorEmailMsg}</p>
+
             <hr />
           </label>
           <label>
@@ -76,6 +79,7 @@ const Login = (): JSX.Element => {
             />
             <hr />
             <p className="errorPassword">{errors.password?.message} </p>
+            <p className="errorPassMess"> {errorPassMsg}</p>
           </label>
         </div>
         <div className="buttonDiv">
@@ -89,7 +93,7 @@ const Login = (): JSX.Element => {
   );
 };
 
-const MainLogin = styled.div`
+const MainLogin = styled.div<{ errorPassMsg: string; errorEmailMsg: string }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -158,6 +162,18 @@ const MainLogin = styled.div`
         bottom: 40px;
       }
 
+      .errorEmailMess {
+        position: absolute;
+        right: 0;
+        color: #fc4747;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        bottom: 45px;
+        display: ${(props) => (props.errorEmailMsg ? "block" : "none")};
+      }
+
       .errorPassword {
         position: absolute;
         right: 0;
@@ -167,6 +183,18 @@ const MainLogin = styled.div`
         font-weight: 300;
         line-height: normal;
         bottom: -20px;
+      }
+
+      .errorPassMess {
+        position: absolute;
+        right: 0;
+        color: #fc4747;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        bottom: -20px;
+        display: ${(props) => (props.errorPassMsg ? "block" : "none")};
       }
 
       label {
