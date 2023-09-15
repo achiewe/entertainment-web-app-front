@@ -30,11 +30,12 @@ const Login = (): JSX.Element => {
     const password = data.password;
     const logIn = async () => {
       try {
-        await axios.post("http://localhost:3000/login", {
+        await axios.post("http://localhost:3000/Validate", {
           email: email,
           password: password,
         });
         navigate("/");
+        console.log("Submit button clicked");
       } catch (error) {
         const fault = error as any;
         if (fault.response && fault.response.status === 404) {
