@@ -62,7 +62,10 @@ const SignUp = (): JSX.Element => {
             />
             <p className="emailErr">{errors.email?.message} </p>
             <p className="errorEmail">{errorMsg}</p>
-            <hr />
+            <hr
+              className="emailHr"
+              style={{ background: errors.email ? "#FC4747" : "" }}
+            />
           </label>
 
           <label>
@@ -73,7 +76,10 @@ const SignUp = (): JSX.Element => {
               {...register("password")}
             />
             <p className="passwordErr">{errors.password?.message} </p>
-            <hr />
+            <hr
+              className="passHr"
+              style={{ background: errors.password ? "#FC4747" : "" }}
+            />
           </label>
 
           <label>
@@ -84,7 +90,10 @@ const SignUp = (): JSX.Element => {
               {...register("repeatPassword")}
             />
             <p className="repPasswordErr">{errors.repeatPassword?.message} </p>
-            <hr />
+            <hr
+              className="repPasHr"
+              style={{ background: errors.repeatPassword ? "#FC4747" : "" }}
+            />
           </label>
         </div>
         <div className="buttonDiv">
