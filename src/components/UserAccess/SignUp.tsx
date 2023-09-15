@@ -239,6 +239,11 @@ const MainContainer = styled.div<{ errorMsg: string }>`
         cursor: pointer;
       }
 
+      button:hover {
+        background-color: #ffffff;
+        color: #161d2f;
+      }
+
       p {
         color: #ffffff;
         font-size: 15px;

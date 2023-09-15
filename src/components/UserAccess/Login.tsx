@@ -240,6 +240,11 @@ const MainLogin = styled.div<{ errorPassMsg: string; errorEmailMsg: string }>`
         cursor: pointer;
       }
 
+      button:hover {
+        background-color: #ffffff;
+        color: #161d2f;
+      }
+
       p {
         color: #ffffff;
         font-size: 15px;
