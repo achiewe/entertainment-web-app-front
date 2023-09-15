@@ -2,6 +2,7 @@ import styled from "styled-components";
 import GlobalStyles from "./GlobalStyles";
 import Login from "./components/UserAccess/Login";
 import SignUp from "./components/UserAccess/SignUp";
+import Home from "./components/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
       <MainContainer>
         <GlobalStyles />
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
         </Routes>

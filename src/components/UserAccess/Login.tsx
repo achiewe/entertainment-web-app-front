@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import logoSvg from "../../../public/assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { userSchema } from "./LoginModal";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -23,8 +23,31 @@ const Login = (): JSX.Element => {
 
   const [errorMsg, setErrorMsg] = useState("");
 
+  const navigate = useNavigate();
+
   const onSubmit = (data: TypeLogin) => {
-    console.log(data);
+    const email = data.email;
+    const password = data.password;
+    const logIn = async () => {
+      try {
+        await axios.post("http://localhost:3000/login", {
+          email: email,
+          password: password,
+        });
+        navigate("/");
+      } catch (error) {
+        const fault = error as any;
+        if (fault.response && fault.response.status === 404) {
+          console.log("invalid user");
+          setErrorMsg("Invalid password");
+        } else if (fault.response && fault.response.status === 400) {
+          setErrorMsg("Invalid email address");
+        } else {
+          console.log(error);
+        }
+      }
+    };
+    logIn();
   };
 
   return (
