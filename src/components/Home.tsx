@@ -13,6 +13,6 @@ const MainHome = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 24px;
 `;
 export default Home;

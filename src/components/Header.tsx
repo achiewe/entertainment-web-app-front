@@ -75,6 +75,7 @@ const MainContainer = styled.header`
     height: 24px;
     border: 1px solid #fff;
     border-radius: 24px;
+    cursor: pointer;
   }
 `;
 export default Header;
