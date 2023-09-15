@@ -1,12 +1,16 @@
 import styled from "styled-components";
+import Header from "./Header";
 
 const Home = (): JSX.Element => {
-  return <MainHome> </MainHome>;
+  return (
+    <MainHome>
+      <Header />
+    </MainHome>
+  );
 };
 
 const MainHome = styled.div`
   width: 100%;
-  min-width: 100vh;
   display: flex;
   flex-direction: column;
   gap: 26px;
