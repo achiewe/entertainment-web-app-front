@@ -4,8 +4,10 @@ import avatarImg from "../../public/assets/image-avatar.png";
 import { Link } from "react-router-dom";
 
 const Header = (): JSX.Element => {
+  const path = window.location.pathname;
+
   return (
-    <MainContainer>
+    <MainContainer path={path}>
       <img className="logoImg" src={logoSvg} alt="logo icon" />
       <div className="controlPanel">
         <Link to="/" className="homeLink">
@@ -49,7 +51,7 @@ const Header = (): JSX.Element => {
   );
 };
 
-const MainContainer = styled.header`
+const MainContainer = styled.header<{ path: string }>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -68,6 +70,29 @@ const MainContainer = styled.header`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    a {
+      cursor: pointer;
+      :hover {
+        fill: #fc4747;
+      }
+    }
+
+    .homeLink svg path {
+      fill: ${(props) => (props.path === "/" ? "#FFFFFF" : "")};
+    }
+
+    .moviesLink svg path {
+      fill: ${(props) => (props.path === "/Movies" ? "#FFFFFF" : "")};
+    }
+
+    .TVSeriesLink svg path {
+      fill: ${(props) => (props.path === "/TV Series" ? "#FFFFFF" : "")};
+    }
+
+    .BookmarkedLink svg path {
+      fill: ${(props) => (props.path === "/Bookmarked" ? "#FFFFFF" : "")};
+    }
   }
 
   .avatarImg {
