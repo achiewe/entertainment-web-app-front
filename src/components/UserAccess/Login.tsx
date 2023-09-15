@@ -68,7 +68,10 @@ const Login = (): JSX.Element => {
             <p className="errorEmail">{errors.email?.message} </p>
             <p className="errorEmailMess"> {errorEmailMsg}</p>
 
-            <hr />
+            <hr
+              className="emailHr"
+              style={{ background: errors.email ? "#FC4747" : "" }}
+            />
           </label>
           <label>
             <input
@@ -77,7 +80,10 @@ const Login = (): JSX.Element => {
               placeholder="Password"
               {...register("password")}
             />
-            <hr />
+            <hr
+              className="passHr"
+              style={{ background: errors.password ? "#FC4747" : "" }}
+            />
             <p className="errorPassword">{errors.password?.message} </p>
             <p className="errorPassMess"> {errorPassMsg}</p>
           </label>
@@ -202,6 +208,11 @@ const MainLogin = styled.div<{ errorPassMsg: string; errorEmailMsg: string }>`
         flex-direction: column;
         gap: 18px;
         width: 100%;
+
+        .emailHr {
+          background-color: ${(props) =>
+            props.errorEmailMsg ? "#FC4747" : "#5a698f"};
+        }
       }
     }
 
