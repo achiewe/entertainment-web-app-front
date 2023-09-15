@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import Header from "./Header";
+import InputFilter from "./InputFilter";
 
 const Home = (): JSX.Element => {
   return (
     <MainHome>
       <Header />
+      <InputFilter />
     </MainHome>
   );
 };
