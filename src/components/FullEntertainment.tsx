@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 const FullEntertainment = (): JSX.Element => {
-  return <EntertainmentCont> </EntertainmentCont>;
+  return (
+    <EntertainmentCont>
+      <h2> Recommended for you</h2>
+    </EntertainmentCont>
+  );
 };
 
 const EntertainmentCont = styled.div`
@@ -10,7 +14,7 @@ const EntertainmentCont = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 16px;
-  gap: 16px;
+  gap: 24px;
 `;
 
 export default FullEntertainment;
