@@ -2,10 +2,24 @@ import styled from "styled-components";
 import SearchSvg from "../../public/assets/icon-search.svg";
 
 const InputFilter = (): JSX.Element => {
+  const path = window.location.pathname;
   return (
     <InputContainer>
       <img className="searchSvg" src={SearchSvg} alt="search icon" />
-      <input type="text" placeholder="Search for movies or TV series" />
+      <input
+        type="text"
+        placeholder={
+          path === "/"
+            ? "Search for movies or TV series"
+            : path === "/Movies"
+            ? "Search for movies"
+            : path === "/TV Series"
+            ? "Search for TV series"
+            : path === "/Bookmarked"
+            ? "Search for bookmarked shows"
+            : ""
+        }
+      />
     </InputContainer>
   );
 };
