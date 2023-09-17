@@ -3,6 +3,7 @@ import dotImg from "../../public/assets/Oval.svg";
 import movieSvg from "../../public/assets/icon-nav-movies.svg";
 import serieSvg from "../../public/assets/icon-nav-tv-series.svg";
 import bookmarkSvg from "../../public/assets/icon-bookmark-empty.svg";
+import playSvg from "../../public/assets/icon-play.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/redux";
 
@@ -23,15 +24,14 @@ const FullEntertainment = (): JSX.Element => {
                 alt="entertainment image"
               />
               <div className="overlay">
-                <button className="playDiv"> </button>
+                <button className="playDiv">
+                  <img className="playSvg" src={playSvg} alt="play svg" />
+                  <h3>Play </h3>
+                </button>
               </div>
             </div>
             <div className="bookmark">
-              <img
-                src={bookmarkSvg}
-                className="bookmarkSvg"
-                alt="empty bookmark"
-              />
+              <img src={bookmarkSvg} alt="empty bookmark" />
             </div>
             <div className="infoMovie">
               <h4> {entertainmentItem.year}</h4>
@@ -105,6 +105,7 @@ const EntertainmentCont = styled.div`
         width: 100%;
         height: 100%;
         border-radius: 8px;
+        z-index: 1;
         top: 0;
         left: 0;
         right: 0;
@@ -116,11 +117,30 @@ const EntertainmentCont = styled.div`
         );
 
         .playDiv {
-          width: 117px;
-          height: 48px;
+          width: 60px;
+          height: 25px;
           border-radius: 28.5px;
-          opacity: 0.25;
-          background: #fff;
+          border: none;
+          outline: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 4px;
+          background: rgba(255, 255, 255, 0.25);
+
+          .playSvg {
+            width: 16px;
+            height: 16px;
+            z-index: 2;
+          }
+
+          h3 {
+            color: #fff;
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
         }
       }
     }
@@ -135,8 +155,8 @@ const EntertainmentCont = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #10141e;
-      opacity: 0.5006;
+      background: rgba(6, 0, 27, 0.501);
+      z-index: 2;
     }
 
     .infoMovie {
