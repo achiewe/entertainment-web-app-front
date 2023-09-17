@@ -22,6 +22,9 @@ const FullEntertainment = (): JSX.Element => {
                 src={entertainmentItem.thumbnail.regular.small}
                 alt="entertainment image"
               />
+              <div className="overlay">
+                <button className="playDiv"> </button>
+              </div>
             </div>
             <div className="bookmark">
               <img
@@ -85,12 +88,40 @@ const EntertainmentCont = styled.div`
     .imageDiv {
       width: 100%;
       border-radius: 100%;
+      position: relative;
       border-radius: 8px;
 
       .imgThumb {
         width: 164px;
         height: 110px;
         border-radius: 8px;
+      }
+
+      .overlay {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.5) 0%,
+          rgba(0, 0, 0, 0.5) 100%
+        );
+
+        .playDiv {
+          width: 117px;
+          height: 48px;
+          border-radius: 28.5px;
+          opacity: 0.25;
+          background: #fff;
+        }
       }
     }
 
@@ -105,6 +136,7 @@ const EntertainmentCont = styled.div`
       justify-content: center;
       align-items: center;
       background-color: #10141e;
+      opacity: 0.5006;
     }
 
     .infoMovie {
