@@ -11,13 +11,13 @@ import { setEntertainment } from "./store/EntertainmentSlice";
 import { useEffect } from "react";
 
 function App() {
-  const dis = useDispatch();
+  const dispatch = useDispatch();
 
   const takeInfo = async (): Promise<void> => {
     const url = "http://localhost:3000/takeEntertainment";
     try {
       const response = await axios.get<entertainmentType[]>(url);
-      dis(setEntertainment(response.data));
+      dispatch(setEntertainment(response.data));
     } catch (error) {
       console.log("can't take data");
     }

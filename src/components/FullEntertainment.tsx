@@ -2,8 +2,13 @@ import styled from "styled-components";
 import dotImg from "../../public/assets/Oval.svg";
 import movieSvg from "../../public/assets/icon-nav-movies.svg";
 import bookmarkSvg from "../../public/assets/icon-bookmark-empty.svg";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/redux";
 
 const FullEntertainment = (): JSX.Element => {
+  const entertainment = useSelector(
+    (redux: RootState) => redux.entertainment.entertainment
+  );
   return (
     <EntertainmentCont>
       <h2> Recommended for you</h2>
