@@ -1,37 +1,51 @@
 import styled from "styled-components";
 import dotImg from "../../public/assets/Oval.svg";
 import movieSvg from "../../public/assets/icon-nav-movies.svg";
+import serieSvg from "../../public/assets/icon-nav-tv-series.svg";
 import bookmarkSvg from "../../public/assets/icon-bookmark-empty.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/redux";
 
 const FullEntertainment = (): JSX.Element => {
-  const entertainment = useSelector(
-    (redux: RootState) => redux.entertainment.entertainment
+  const enjoyment = useSelector(
+    (ent: RootState) => ent.entertainment.entertainment
   );
   return (
     <EntertainmentCont>
       <h2> Recommended for you</h2>
       <div className="recommendDiv">
-        <div className="movieStructure">
-          <div className="imageDiv"> </div>
-          <div className="bookmark">
-            <img
-              src={bookmarkSvg}
-              className="bookmarkSvg"
-              alt="empty bookmark"
-            />
+        {enjoyment.map((entertainmentItem, index) => (
+          <div key={index} className="movieStructure">
+            <div className="imageDiv">
+              <img
+                className="imgThumb"
+                src={entertainmentItem.thumbnail.regular.small}
+                alt="entertainment image"
+              />
+            </div>
+            <div className="bookmark">
+              <img
+                src={bookmarkSvg}
+                className="bookmarkSvg"
+                alt="empty bookmark"
+              />
+            </div>
+            <div className="infoMovie">
+              <h4> {entertainmentItem.year}</h4>
+              <img src={dotImg} className="dot" />
+              <img
+                src={
+                  entertainmentItem.category === "Movie" ? movieSvg : serieSvg
+                }
+                className="movieSerielog"
+              />
+              <h4> {entertainmentItem.category}</h4>
+              <img src={dotImg} className="dot" />
+              <h4> {entertainmentItem.rating}</h4>
+            </div>
+            <h2> {entertainmentItem.title}</h2>
           </div>
-          <div className="infoMovie">
-            <h4> 2019</h4>
-            <img src={dotImg} className="dot" />
-            <img src={movieSvg} className="movieSerielog" />
-            <h4> Movie</h4>
-            <img src={dotImg} className="dot" />
-            <h4> E</h4>
-          </div>
-          <h2> The Great Lands</h2>
-        </div>
+        ))}
       </div>
     </EntertainmentCont>
   );
@@ -69,8 +83,15 @@ const EntertainmentCont = styled.div`
     gap: 4px;
 
     .imageDiv {
-      width: 164px;
+      width: 100%;
+      border-radius: 100%;
       border-radius: 8px;
+
+      .imgThumb {
+        width: 164px;
+        height: 110px;
+        border-radius: 8px;
+      }
     }
 
     .bookmark {

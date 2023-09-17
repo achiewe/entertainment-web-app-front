@@ -3,7 +3,7 @@ import EntertainmentSlice, { entertaiProps } from "./EntertainmentSlice";
 
 const store = configureStore({
   reducer: {
-    Entertainment: EntertainmentSlice,
+    entertainment: EntertainmentSlice,
   },
 });
 
