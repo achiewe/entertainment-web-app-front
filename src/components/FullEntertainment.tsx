@@ -88,18 +88,20 @@ const EntertainmentCont = styled.div`
     .imageDiv {
       width: 100%;
       border-radius: 100%;
-      position: relative;
+
       border-radius: 8px;
 
       .imgThumb {
         width: 164px;
         height: 110px;
         border-radius: 8px;
+        position: relative;
+        cursor: pointer;
       }
 
       .overlay {
+        display: none;
         position: absolute;
-        display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
@@ -142,6 +144,10 @@ const EntertainmentCont = styled.div`
             line-height: normal;
           }
         }
+      }
+
+      .imageDiv:hover .overlay {
+        display: flex;
       }
     }
 
