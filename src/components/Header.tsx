@@ -2,12 +2,15 @@ import styled from "styled-components";
 import logoSvg from "../../public/assets/logo.svg";
 import avatarImg from "../../public/assets/image-avatar.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Header = (): JSX.Element => {
   const path = window.location.pathname;
 
+  const [openFrame, setOpenFrame] = useState<boolean>(false);
+
   return (
-    <MainContainer path={path}>
+    <MainContainer path={path} openFrame={openFrame}>
       <img className="logoImg" src={logoSvg} alt="logo icon" />
       <div className="controlPanel">
         <Link to="/" className="homeLink">
@@ -46,12 +49,19 @@ const Header = (): JSX.Element => {
           </svg>
         </Link>
       </div>
-      <img className="avatarImg" src={avatarImg} alt="avatar image" />
+      <img
+        className="avatarImg"
+        src={avatarImg}
+        alt="avatar image"
+        onClick={() => {
+          setOpenFrame(!openFrame);
+        }}
+      />
     </MainContainer>
   );
 };
 
-const MainContainer = styled.header<{ path: string }>`
+const MainContainer = styled.header<{ path: string; openFrame: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: row;
