@@ -6,6 +6,8 @@ import bookmarkSvg from "../../public/assets/icon-bookmark-empty.svg";
 import playSvg from "../../public/assets/icon-play.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
+import axios from "axios";
+import { takeInfo } from "../App";
 
 const FullEntertainment = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -20,7 +22,20 @@ const FullEntertainment = (): JSX.Element => {
 
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
 
-  const renewEntertainment = (id: string, bookmark: boolean) => {};
+  const renewEntertainment = async (id: string, bookmark: boolean) => {
+    try {
+      await axios.put(
+        `http://localhost:3000/changeBookmark/${clientEmail}/${id}`,
+        {
+          isBookmarked: bookmark,
+        }
+      );
+
+      takeInfo(clientEmail, logIn, dispatch);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <EntertainmentCont>
       <h2> Recommended for you</h2>
