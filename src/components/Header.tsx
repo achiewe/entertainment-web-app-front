@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import logoSvg from "../../public/assets/logo.svg";
 import avatarImg from "../../public/assets/image-avatar.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
 import { setLogIn } from "../store/LoggedInSlice";
 import { setClientEmail } from "../store/ClientEmailSlice";
@@ -15,11 +15,16 @@ const Header = (): JSX.Element => {
 
   const logIn = useSelector((store: RootState) => store.logIn.logIn);
 
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const signOut = (): void => {
-    setLogIn(false);
-    setClientEmail("");
+    dispatch(setLogIn(false));
+    dispatch(setClientEmail(""));
     localStorage.removeItem("login");
     localStorage.removeItem("clientEmail");
+    navigate("/");
   };
   return (
     <MainContainer path={path} openFrame={openFrame}>
@@ -75,16 +80,15 @@ const Header = (): JSX.Element => {
           <Link to="/SignUp"> Sign Up</Link>
         </div>
       ) : (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
+        <Link
+          onClick={() => {
             signOut();
           }}
           className="signOut"
+          to="/"
         >
-          {" "}
-          sign out{" "}
-        </button>
+          sign out
+        </Link>
       )}
     </MainContainer>
   );
