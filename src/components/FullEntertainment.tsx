@@ -4,13 +4,21 @@ import movieSvg from "../../public/assets/icon-nav-movies.svg";
 import serieSvg from "../../public/assets/icon-nav-tv-series.svg";
 import bookmarkSvg from "../../public/assets/icon-bookmark-empty.svg";
 import playSvg from "../../public/assets/icon-play.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
 
 const FullEntertainment = (): JSX.Element => {
+  const dispatch = useDispatch();
+
   const enjoyment = useSelector(
     (ent: RootState) => ent.entertainment.entertainment
   );
+
+  const clientEmail = useSelector(
+    (user: RootState) => user.clientEmail.clientEmail
+  );
+
+  const logIn = useSelector((user: RootState) => user.logIn.logIn);
   return (
     <EntertainmentCont>
       <h2> Recommended for you</h2>
