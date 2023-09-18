@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import EntertainmentSlice, { entertaiProps } from "./EntertainmentSlice";
-import clientEmailSlice, { userProps } from "./clientEmailSlice";
+import clientEmailSlice, { userProps } from "./ClientEmailSlice";
 
 const store = configureStore({
   reducer: {
