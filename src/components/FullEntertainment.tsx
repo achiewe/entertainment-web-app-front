@@ -23,12 +23,12 @@ const FullEntertainment = (): JSX.Element => {
 
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
 
-  const renewEntertainment = async (id: string, bookmark: boolean) => {
+  const renewEntertainment = async (id: string, bookmarked: boolean) => {
     try {
       await axios.put(
         `http://localhost:3000/changeBookmark/${clientEmail}/${id}`,
         {
-          isBookmarked: bookmark,
+          isBookmarked: bookmarked,
         }
       );
 
@@ -65,7 +65,11 @@ const FullEntertainment = (): JSX.Element => {
                     !entertainmentItem.isBookmarked // Pass the boolean value as the second argument
                   );
                 }}
-                src={emptybookmarkSvg}
+                src={
+                  entertainmentItem.isBookmarked === false
+                    ? emptybookmarkSvg
+                    : FullbookmarkSvg
+                }
                 alt="empty bookmark"
               />
             </div>
