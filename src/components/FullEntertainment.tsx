@@ -2,7 +2,8 @@ import styled from "styled-components";
 import dotImg from "../../public/assets/Oval.svg";
 import movieSvg from "../../public/assets/icon-nav-movies.svg";
 import serieSvg from "../../public/assets/icon-nav-tv-series.svg";
-import bookmarkSvg from "../../public/assets/icon-bookmark-empty.svg";
+import emptybookmarkSvg from "../../public/assets/icon-bookmark-empty.svg";
+import FullbookmarkSvg from "../../public/assets/icon-bookmark-full.svg";
 import playSvg from "../../public/assets/icon-play.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
@@ -36,6 +37,7 @@ const FullEntertainment = (): JSX.Element => {
       console.log(error);
     }
   };
+
   return (
     <EntertainmentCont>
       <h2> Recommended for you</h2>
@@ -56,7 +58,16 @@ const FullEntertainment = (): JSX.Element => {
               </div>
             </div>
             <div className="bookmark">
-              <img src={bookmarkSvg} alt="empty bookmark" />
+              <img
+                onClick={() => {
+                  renewEntertainment(
+                    entertainmentItem._id, // Pass the entertainment item ID as the first argument
+                    !entertainmentItem.isBookmarked // Pass the boolean value as the second argument
+                  );
+                }}
+                src={emptybookmarkSvg}
+                alt="empty bookmark"
+              />
             </div>
             <div className="infoMovie">
               <h4> {entertainmentItem.year}</h4>
