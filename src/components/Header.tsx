@@ -3,12 +3,15 @@ import logoSvg from "../../public/assets/logo.svg";
 import avatarImg from "../../public/assets/image-avatar.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/redux";
 
 const Header = (): JSX.Element => {
   const path = window.location.pathname;
 
   const [openFrame, setOpenFrame] = useState<boolean>(false);
 
+  const logIn = useSelector((store: RootState) => store.logIn.logIn);
   return (
     <MainContainer path={path} openFrame={openFrame}>
       <img className="logoImg" src={logoSvg} alt="logo icon" />
@@ -57,6 +60,14 @@ const Header = (): JSX.Element => {
           setOpenFrame(!openFrame);
         }}
       />
+      {logIn === false ? (
+        <div className="frame">
+          <Link to="/Login">Login</Link>
+          <Link to="/SignUp"> Sign Up</Link>
+        </div>
+      ) : (
+        <button> sign out </button>
+      )}
     </MainContainer>
   );
 };
@@ -69,6 +80,38 @@ const MainContainer = styled.header<{ path: string; openFrame: boolean }>`
   align-items: center;
   padding: 18px 16px;
   background-color: #161d2f;
+  position: relative;
+
+  .frame {
+    display: ${(props) => (props.openFrame ? "flex" : "none")};
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-direction: column;
+    position: absolute;
+    right: 15px;
+    top: 75px;
+    width: 130px;
+    height: 90px;
+    background-color: #161d2f;
+    border-radius: 8px;
+
+    a {
+      color: #fff;
+      text-align: center;
+      font-size: 15px;
+      font-style: normal;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 300;
+      line-height: normal;
+    }
+
+    a:hover {
+      color: #fc4747;
+    }
+  }
+
   .logoImg {
     width: 25px;
     height: 20px;
