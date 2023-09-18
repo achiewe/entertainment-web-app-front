@@ -47,7 +47,7 @@ function App() {
   );
   const logIn = useSelector((store: RootState) => store.logIn.logIn);
 
-  const isUserLoggedIn = localStorage.getItem("logIn");
+  const isUserLoggedIn = localStorage.getItem("login");
   const userEmail = localStorage.getItem("clientEmail");
 
   if (isUserLoggedIn && userEmail) {

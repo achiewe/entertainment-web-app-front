@@ -6,6 +6,9 @@ import { userSchema } from "./LoginModal";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setLogIn } from "../../store/LoggedInSlice";
+import { setClientEmail } from "../../store/ClientEmailSlice";
 
 interface TypeLogin {
   email: string;
@@ -24,6 +27,8 @@ const Login = (): JSX.Element => {
   const [errorPassMsg, setErrorPassMsg] = useState("");
   const [errorEmailMsg, setErrorEmailMsg] = useState("");
 
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const onSubmit = (data: TypeLogin) => {
@@ -35,7 +40,16 @@ const Login = (): JSX.Element => {
           email: email,
           password: password,
         });
-        navigate("/");
+
+        dispatch(setLogIn(true));
+        dispatch(setClientEmail(email));
+
+        localStorage.setItem("login", "true");
+        localStorage.setItem("clientEmail", email);
+
+        setTimeout(() => {
+          navigate("/");
+        }, 200);
         console.log("Submit button clicked");
       } catch (error) {
         const fault = error as any;
