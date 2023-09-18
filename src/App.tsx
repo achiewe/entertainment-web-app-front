@@ -20,21 +20,25 @@ export const takeInfo = async (
   dispatch: Dispatch
 ): Promise<void> => {
   if (logIn) {
+    console.log("clientEmail:", clientEmail);
+    console.log("logIn:", logIn);
     const url = `http://localhost:3000/user?email=${clientEmail}`;
 
     try {
       const response = await axios.get<entertainmentType[]>(url);
+      console.log("API response:", response.data);
       dispatch(setEntertainment(response.data));
     } catch (error) {
-      console.log("can't take data");
+      console.error("Error fetching data:", error);
     }
   } else {
     const url = "http://localhost:3000/takeEntertainment";
     try {
       const response = await axios.get<entertainmentType[]>(url);
+      console.log("API response:", response.data);
       dispatch(setEntertainment(response.data));
     } catch (error) {
-      console.log("can't take data");
+      console.error("Error fetching data:", error);
     }
   }
 };

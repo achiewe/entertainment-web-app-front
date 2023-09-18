@@ -23,32 +23,35 @@ const FullEntertainment = (): JSX.Element => {
 
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
 
-  const renewEntertainment = async (id: string, bookmarked: boolean) => {
+  const renewEnt = async (id: string, bookmarked: boolean) => {
     try {
+      console.log(
+        `Renewing entertainment with ID: ${id}, isBookmarked: ${bookmarked}`
+      );
       await axios.put(
         `http://localhost:3000/changeBookmark/${clientEmail}/${id}`,
         {
           isBookmarked: bookmarked,
         }
       );
-
+      console.log("Bookmark updated successfully");
       takeInfo(clientEmail, logIn, dispatch);
     } catch (error) {
-      console.log(error);
+      console.log("Error updating bookmark:", error);
     }
   };
 
-  console.log(enjoyment);
+  console.log("enjoyment data:", enjoyment);
   return (
     <EntertainmentCont>
       <h2> Recommended for you</h2>
       <div className="recommendDiv">
-        {enjoyment.map((entertainmentItem, index) => (
+        {enjoyment.map((ent, index) => (
           <div key={index} className="movieStructure">
             <div className="imageDiv">
               <img
                 className="imgThumb"
-                src={entertainmentItem.thumbnail.regular.small}
+                src={ent.thumbnail.regular.small}
                 alt="entertainment image"
               />
               <div className="overlay">
@@ -61,13 +64,11 @@ const FullEntertainment = (): JSX.Element => {
             <div className="bookmark">
               <img
                 onClick={() => {
-                  renewEntertainment(
-                    entertainmentItem._id, // Pass the entertainment item ID as the first argument
-                    !entertainmentItem.isBookmarked // Pass the boolean value as the second argument
-                  );
+                  console.log(`Clicked on bookmark for ID: ${ent._id}`);
+                  renewEnt(ent._id, !ent.isBookmarked);
                 }}
                 src={
-                  entertainmentItem.isBookmarked === false
+                  ent.isBookmarked === false
                     ? emptybookmarkSvg
                     : FullbookmarkSvg
                 }
@@ -75,19 +76,17 @@ const FullEntertainment = (): JSX.Element => {
               />
             </div>
             <div className="infoMovie">
-              <h4> {entertainmentItem.year}</h4>
+              <h4> {ent.year}</h4>
               <img src={dotImg} className="dot" />
               <img
-                src={
-                  entertainmentItem.category === "Movie" ? movieSvg : serieSvg
-                }
+                src={ent.category === "Movie" ? movieSvg : serieSvg}
                 className="movieSerielog"
               />
-              <h4> {entertainmentItem.category}</h4>
+              <h4> {ent.category}</h4>
               <img src={dotImg} className="dot" />
-              <h4> {entertainmentItem.rating}</h4>
+              <h4> {ent.rating}</h4>
             </div>
-            <h2> {entertainmentItem.title}</h2>
+            <h2> {ent.title}</h2>
           </div>
         ))}
       </div>
