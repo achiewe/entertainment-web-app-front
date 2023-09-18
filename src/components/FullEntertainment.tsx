@@ -19,6 +19,8 @@ const FullEntertainment = (): JSX.Element => {
   );
 
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
+
+  const renewEntertainment = (id: string, bookmark: boolean) => {};
   return (
     <EntertainmentCont>
       <h2> Recommended for you</h2>
