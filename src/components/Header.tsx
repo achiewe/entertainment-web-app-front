@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/redux";
+import { setLogIn } from "../store/LoggedInSlice";
+import { setClientEmail } from "../store/ClientEmailSlice";
 
 const Header = (): JSX.Element => {
   const path = window.location.pathname;
@@ -12,6 +14,13 @@ const Header = (): JSX.Element => {
   const [openFrame, setOpenFrame] = useState<boolean>(false);
 
   const logIn = useSelector((store: RootState) => store.logIn.logIn);
+
+  const signOut = (): void => {
+    setLogIn(false);
+    setClientEmail("");
+    localStorage.removeItem("login");
+    localStorage.removeItem("clientEmail");
+  };
   return (
     <MainContainer path={path} openFrame={openFrame}>
       <img className="logoImg" src={logoSvg} alt="logo icon" />
@@ -66,7 +75,16 @@ const Header = (): JSX.Element => {
           <Link to="/SignUp"> Sign Up</Link>
         </div>
       ) : (
-        <button> sign out </button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            signOut();
+          }}
+          className="signOut"
+        >
+          {" "}
+          sign out{" "}
+        </button>
       )}
     </MainContainer>
   );
