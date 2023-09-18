@@ -20,7 +20,7 @@ export const takeInfo = async (
   dispatch: Dispatch
 ): Promise<void> => {
   if (logIn) {
-    const url = `http://localhost:3000/client?email=${clientEmail}`;
+    const url = `http://localhost:3000/user?email=${clientEmail}`;
 
     try {
       const response = await axios.get<entertainmentType[]>(url);
@@ -58,6 +58,8 @@ function App() {
   useEffect(() => {
     takeInfo(clientEmail, logIn, dispatch);
   }, [logIn]);
+
+  console.log(logIn);
 
   return (
     <Router>
