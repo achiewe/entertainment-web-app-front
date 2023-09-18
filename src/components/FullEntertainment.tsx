@@ -38,6 +38,7 @@ const FullEntertainment = (): JSX.Element => {
     }
   };
 
+  console.log(enjoyment);
   return (
     <EntertainmentCont>
       <h2> Recommended for you</h2>
