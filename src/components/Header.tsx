@@ -80,15 +80,16 @@ const Header = (): JSX.Element => {
           <Link to="/SignUp"> Sign Up</Link>
         </div>
       ) : (
-        <Link
-          onClick={() => {
-            signOut();
-          }}
-          className="signOut"
-          to="/"
-        >
-          sign out
-        </Link>
+        <div className="frame">
+          <button
+            onClick={() => {
+              signOut();
+            }}
+            className="signOut"
+          >
+            sign out
+          </button>
+        </div>
       )}
     </MainContainer>
   );
@@ -125,6 +126,21 @@ const MainContainer = styled.header<{ path: string; openFrame: boolean }>`
       font-style: normal;
       cursor: pointer;
       text-decoration: none;
+      font-weight: 300;
+      line-height: normal;
+    }
+
+    .signOut {
+      width: 80px;
+      height: 40px;
+      border-radius: 8px;
+      border: none;
+      background-color: #fc4747;
+      color: #fff;
+      cursor: pointer;
+      text-align: center;
+      font-size: 15px;
+      font-style: normal;
       font-weight: 300;
       line-height: normal;
     }
