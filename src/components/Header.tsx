@@ -26,9 +26,17 @@ const Header = (): JSX.Element => {
     localStorage.removeItem("clientEmail");
     navigate("/");
   };
+
   return (
     <MainContainer path={path} openFrame={openFrame}>
-      <img className="logoImg" src={logoSvg} alt="logo icon" />
+      <img
+        className="logoImg"
+        src={logoSvg}
+        alt="logo icon"
+        onClick={() => {
+          window.location.reload();
+        }}
+      />
       <div className="controlPanel">
         <Link to="/" className="homeLink">
           <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -158,6 +166,7 @@ const MainContainer = styled.header<{ path: string; openFrame: boolean }>`
   .logoImg {
     width: 25px;
     height: 20px;
+    cursor: pointer;
   }
 
   .controlPanel {
