@@ -63,12 +63,15 @@ const FullEntertainment = (): JSX.Element => {
             <div className="bookmark">
               <img
                 className="bookmarkImg"
-                onClick={() => {
+                onClick={async (e) => {
+                  e.preventDefault();
                   console.log(`Clicked on bookmark for ID: ${ent._id}`);
-                  renewEnt(ent._id, !ent.isBookmarked);
+                  console.log("Before update:", ent);
+                  await renewEnt(ent._id, !ent.isBookmarked);
+                  console.log("After update:", ent);
                 }}
                 src={ent.isBookmarked === false ? emptybook : Fullbook}
-                alt="empty bookmark"
+                alt="bookmark"
               />
             </div>
             <div className="infoMovie">
