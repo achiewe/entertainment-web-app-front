@@ -145,6 +145,11 @@ const MainContainer = styled.header<{ path: string; openFrame: boolean }>`
       line-height: normal;
     }
 
+    .signOut:hover {
+      background-color: #fff;
+      color: #fc4747;
+    }
+
     a:hover {
       color: #fc4747;
     }
