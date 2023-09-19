@@ -5,8 +5,13 @@ export interface entertaiProps {
   entertainment: entertainment[];
 }
 
+const getCachedEntertainment = () => {
+  const cachedData = localStorage.getItem("entertainment");
+  return cachedData ? JSON.parse(cachedData) : [];
+};
+
 const initialState: entertaiProps = {
-  entertainment: [],
+  entertainment: getCachedEntertainment(),
 };
 
 const entertainmentSlice = createSlice({
@@ -15,6 +20,7 @@ const entertainmentSlice = createSlice({
   reducers: {
     setEntertainment: (state, action: PayloadAction<entertainment[]>) => {
       state.entertainment = action.payload;
+      localStorage.setItem("entertainment", JSON.stringify(action.payload));
     },
   },
 });
