@@ -66,9 +66,13 @@ const FullEntertainment = (): JSX.Element => {
                 onClick={async (e) => {
                   e.preventDefault();
                   console.log(`Clicked on bookmark for ID: ${ent._id}`);
-                  console.log("Before update:", ent);
+                  console.log(
+                    `Before update - isBookmarked: ${ent.isBookmarked}`
+                  );
                   await renewEnt(ent._id, !ent.isBookmarked);
-                  console.log("After update:", ent);
+                  console.log(
+                    `After update - isBookmarked: ${ent.isBookmarked}`
+                  );
                 }}
                 src={ent.isBookmarked === false ? emptybook : Fullbook}
                 alt="bookmark"
