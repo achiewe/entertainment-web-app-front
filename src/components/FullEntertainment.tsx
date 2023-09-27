@@ -23,15 +23,15 @@ const FullEntertainment = (): JSX.Element => {
 
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
 
-  const renewEnt = async (id: string, bookmarked: boolean) => {
+  const renewEnt = async (id: string, newIsBookmarked: boolean) => {
     try {
       console.log(
-        `Renewing entertainment with ID: ${id}, isBookmarked: ${bookmarked}`
+        `Renewing entertainment with ID: ${id}, isBookmarked: ${newIsBookmarked}`
       );
       await axios.put(
         `http://localhost:3000/changeBookmark/${clientEmail}/${id}`,
         {
-          isBookmarked: bookmarked,
+          isBookmarked: newIsBookmarked,
         }
       );
       console.log("Bookmark updated successfully");
@@ -69,12 +69,14 @@ const FullEntertainment = (): JSX.Element => {
                   console.log(
                     `Before update - isBookmarked: ${ent.isBookmarked}`
                   );
-                  await renewEnt(ent._id, !ent.isBookmarked);
+                  // Toggle the bookmark status locally
+                  const newIsBookmarked = !ent.isBookmarked;
+                  await renewEnt(ent._id, newIsBookmarked);
                   console.log(
-                    `After update - isBookmarked: ${ent.isBookmarked}`
+                    `After update - isBookmarked: ${newIsBookmarked}`
                   );
                 }}
-                src={ent.isBookmarked === false ? emptybook : Fullbook}
+                src={ent.isBookmarked === true ? Fullbook : emptybook}
                 alt="bookmark"
               />
             </div>
