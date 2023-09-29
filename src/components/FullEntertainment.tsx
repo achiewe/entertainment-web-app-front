@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
 import axios from "axios";
 import { takeInfo } from "../App";
+import TrendingEnt from "./TrendingEnt";
 
 const FullEntertainment = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const FullEntertainment = (): JSX.Element => {
 
   return (
     <EntertainmentCont>
+      <TrendingEnt />
       <h2> Recommended for you</h2>
       <div className="recommendDiv">
         {enjoyment.map((ent, index) => (
