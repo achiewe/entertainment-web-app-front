@@ -2,10 +2,18 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/redux";
 
 const TrendingEnt = (): JSX.Element => {
   const [width, setWidth] = useState<number | undefined>(0);
   const carousel = useRef<HTMLDivElement | null>(null);
+  const enjoyment = useSelector(
+    (ent: RootState) => ent.entertainment.entertainment
+  );
+
+  console.log("i am", enjoyment);
+  const isTrendFilter = enjoyment.filter((enjoy) => enjoy.isTrending === true);
 
   useEffect(() => {
     const current = carousel.current;
@@ -33,11 +41,14 @@ const TrendingEnt = (): JSX.Element => {
             dragConstraints={{ right: 0, left: -930 }}
             className="innerCarousel"
           >
-            <motion.div className="item">1</motion.div>
-            <motion.div className="item">2</motion.div>
-            <motion.div className="item">3</motion.div>
-            <motion.div className="item">4</motion.div>
-            <motion.div className="item">5</motion.div>
+            {isTrendFilter.map((trend) => (
+              <motion.div className="item">
+                <img
+                  className="ImgTrend"
+                  src={trend.thumbnail.trending.small}
+                />
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
       )}
@@ -75,10 +86,14 @@ const TrendingMain = styled.div`
 
     .item {
       min-width: 240px;
-      min-height: 70px;
-      background-color: red;
-      padding: 40px;
+      min-height: 140px;
       border-radius: 8px;
+
+      .ImgTrend {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+      }
     }
   }
 `;
