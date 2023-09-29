@@ -65,16 +65,16 @@ const FullEntertainment = (): JSX.Element => {
                 className="bookmarkImg"
                 onClick={async (e) => {
                   e.preventDefault();
-                  console.log(`Clicked on bookmark for ID: ${ent._id}`);
-                  console.log(
-                    `Before update - isBookmarked: ${ent.isBookmarked}`
-                  );
+                  // console.log(`Clicked on bookmark for ID: ${ent._id}`);
+                  // console.log(
+                  //   `Before update - isBookmarked: ${ent.isBookmarked}`
+                  // );
                   // Toggle the bookmark status locally
                   const newIsBookmarked = !ent.isBookmarked;
                   await renewEnt(ent._id, newIsBookmarked);
-                  console.log(
-                    `After update - isBookmarked: ${newIsBookmarked}`
-                  );
+                  // console.log(
+                  //   `After update - isBookmarked: ${newIsBookmarked}`
+                  // );
                 }}
                 src={ent.isBookmarked === true ? Fullbook : emptybook}
                 alt="bookmark"

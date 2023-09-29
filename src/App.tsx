@@ -25,8 +25,9 @@ export const takeInfo = async (
     const url = `http://localhost:3000/user?email=${clientEmail}`;
 
     try {
-      const response = await axios.get<entertainmentType[]>(url);
+      const response = await axios.get(url);
       console.log("API response:", response.data);
+      // Assuming you have a setEntertainment action defined in your code
       dispatch(setEntertainment(response.data));
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -36,6 +37,7 @@ export const takeInfo = async (
     try {
       const response = await axios.get<entertainmentType[]>(url);
       console.log("API response:", response.data);
+      // Assuming you have a setEntertainment action defined in your code
       dispatch(setEntertainment(response.data));
     } catch (error) {
       console.error("Error fetching data:", error);
