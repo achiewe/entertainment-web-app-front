@@ -22,23 +22,25 @@ const TrendingEnt = (): JSX.Element => {
   return (
     <TrendingMain>
       <h2> Trending</h2>
-      <motion.div
-        ref={carousel}
-        className="carousel"
-        whileDrag={{ cursor: "grabbing" }}
-      >
+      {width !== undefined && (
         <motion.div
-          drag="x"
-          dragConstraints={{ right: 2000, left: -width! }} // Use the non-null assertion operator (!) here
-          className="innerCarousel"
+          ref={carousel}
+          className="carousel"
+          whileDrag={{ cursor: "grabbing" }}
         >
-          <motion.div className="item">1</motion.div>
-          <motion.div className="item">2</motion.div>
-          <motion.div className="item">3</motion.div>
-          <motion.div className="item">4</motion.div>
-          <motion.div className="item">5</motion.div>
+          <motion.div
+            drag="x"
+            dragConstraints={{ right: 0, left: -930 }}
+            className="innerCarousel"
+          >
+            <motion.div className="item">1</motion.div>
+            <motion.div className="item">2</motion.div>
+            <motion.div className="item">3</motion.div>
+            <motion.div className="item">4</motion.div>
+            <motion.div className="item">5</motion.div>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </TrendingMain>
   );
 };
@@ -63,7 +65,7 @@ const TrendingMain = styled.div`
   .carousel {
     cursor: grab;
     overflow-x: hidden;
-    background-color: white;
+    background-color: #10141e;
 
     .innerCarousel {
       display: flex;
