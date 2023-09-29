@@ -32,12 +32,12 @@ const TrendingMain = styled.div`
 
   .silderDiv {
     display: flex;
-    flex-wrap: nowrap;
     overflow-x: scroll;
   }
 
   .trendingInfoDiv {
-    width: 10vw;
+    width: 10px;
+    height: 10px;
     background-color: red;
   }
 `;
