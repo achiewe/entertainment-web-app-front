@@ -47,6 +47,10 @@ const TrendingEnt = (): JSX.Element => {
                   className="ImgTrend"
                   src={trend.thumbnail.trending.small}
                 />
+
+                <div className="trendingStructure">
+                  <div className="bookmarkTrend"></div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -85,14 +89,34 @@ const TrendingMain = styled.div`
     }
 
     .item {
-      min-width: 240px;
-      min-height: 140px;
+      width: 240px;
+      height: 140px;
       border-radius: 8px;
 
       .ImgTrend {
         width: 100%;
         height: 100%;
         border-radius: 8px;
+      }
+
+      .trendingStructure {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 8px 8px 16px 16px;
+        align-items: flex-end;
+        gap: 46px;
+
+        .bookmarkTrend {
+          width: 32px;
+          height: 32px;
+          border-radius: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: rgba(6, 0, 27, 0.501);
+          z-index: 2;
+        }
       }
     }
   }
