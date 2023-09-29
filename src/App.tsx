@@ -20,13 +20,10 @@ export const takeInfo = async (
   dispatch: Dispatch
 ): Promise<void> => {
   if (logIn) {
-    console.log("clientEmail:", clientEmail);
-    console.log("logIn:", logIn);
     const url = `http://localhost:3000/user?email=${clientEmail}`;
 
     try {
       const response = await axios.get(url);
-      console.log("API response:", response.data);
       // Assuming you have a setEntertainment action defined in your code
       dispatch(setEntertainment(response.data));
     } catch (error) {
