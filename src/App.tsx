@@ -4,6 +4,7 @@ import Login from "./components/UserAccess/Login";
 import SignUp from "./components/UserAccess/SignUp";
 import Home from "./components/Home";
 import MovieEnt from "./components/MovieEnt";
+import TvSeriesEnt from "./components/TvSeriesEnt";
 import Header from "./components/Header";
 import InputFilter from "./components/InputFilter";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -76,6 +77,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Movies" element={<MovieEnt />} />
+          <Route path="/TV Series" element={<TvSeriesEnt />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
         </Routes>
