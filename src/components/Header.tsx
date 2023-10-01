@@ -29,7 +29,7 @@ const Header = (): JSX.Element => {
   };
 
   return (
-    <MainContainer path={path} openFrame={openFrame}>
+    <MainContainer path={path} openFrame={openFrame} logIn={logIn}>
       <img
         className="logoImg"
         src={logoSvg}
@@ -104,7 +104,11 @@ const Header = (): JSX.Element => {
   );
 };
 
-const MainContainer = styled.header<{ path: string; openFrame: boolean }>`
+const MainContainer = styled.header<{
+  path: string;
+  openFrame: boolean;
+  logIn: boolean;
+}>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -194,6 +198,10 @@ const MainContainer = styled.header<{ path: string; openFrame: boolean }>`
 
     .TVSeriesLink svg path {
       fill: ${(props) => (props.path === "/TV Series" ? "#FFFFFF" : "")};
+    }
+
+    .BookmarkedLink {
+      display: ${(props) => (props.logIn ? "flex" : "none")};
     }
 
     .BookmarkedLink svg path {
