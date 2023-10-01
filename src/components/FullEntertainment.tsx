@@ -129,7 +129,6 @@ const EntertainmentCont = styled.div`
     .imageDiv {
       width: 100%;
       border-radius: 100%;
-
       border-radius: 8px;
 
       .imgThumb {
@@ -139,57 +138,58 @@ const EntertainmentCont = styled.div`
         position: relative;
         cursor: pointer;
       }
+    }
 
-      .overlay {
-        display: none;
-        position: absolute;
+    .overlay {
+      display: none;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      width: 100%;
+      height: 110px;
+      border-radius: 8px;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
+
+      .playDiv {
+        width: 60px;
+        height: 25px;
+        border-radius: 28.5px;
+        border: none;
+        outline: none;
+        display: flex;
         justify-content: center;
         align-items: center;
-        width: 100%;
-        height: 100%;
-        border-radius: 8px;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          0deg,
-          rgba(0, 0, 0, 0.5) 0%,
-          rgba(0, 0, 0, 0.5) 100%
-        );
+        gap: 4px;
+        background: rgba(255, 255, 255, 0.25);
 
-        .playDiv {
-          width: 60px;
-          height: 25px;
-          border-radius: 28.5px;
-          border: none;
-          outline: none;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 4px;
-          background: rgba(255, 255, 255, 0.25);
+        .playSvg {
+          width: 16px;
+          height: 16px;
+          z-index: 2;
+        }
 
-          .playSvg {
-            width: 16px;
-            height: 16px;
-            z-index: 2;
-          }
-
-          h3 {
-            color: #fff;
-            font-size: 10px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-          }
+        h3 {
+          color: #fff;
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
         }
       }
+    }
 
-      .imageDiv:hover .overlay {
-        display: flex;
-      }
+    .imageDiv:hover .overlay {
+      display: flex;
     }
 
     .bookmark {
