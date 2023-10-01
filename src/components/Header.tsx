@@ -202,7 +202,7 @@ const MainContainer = styled.header<{
     }
 
     .TVSeriesLink svg path {
-      fill: ${(props) => (props.path === "/TV Series" ? "#FFFFFF" : "")};
+      fill: ${(props) => (props.path === "/TVSeries" ? "#FFFFFF" : "")};
     }
 
     .BookmarkedLink {
