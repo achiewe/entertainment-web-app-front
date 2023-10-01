@@ -115,9 +115,7 @@ const MainContainer = styled.header<{
       ? "none"
       : props.path === "/SignUp"
       ? "none"
-      : props.path === "/"
-      ? "flex"
-      : "none"};
+      : "flex"};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

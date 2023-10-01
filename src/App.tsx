@@ -3,6 +3,7 @@ import GlobalStyles from "./GlobalStyles";
 import Login from "./components/UserAccess/Login";
 import SignUp from "./components/UserAccess/SignUp";
 import Home from "./components/Home";
+import MovieEnt from "./components/MovieEnt";
 import Header from "./components/Header";
 import InputFilter from "./components/InputFilter";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -74,6 +75,7 @@ function App() {
         <InputFilter />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Movies" element={<MovieEnt />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
         </Routes>

@@ -31,9 +31,7 @@ const InputContainer = styled.div<{ path: string }>`
       ? "none"
       : props.path === "/SignUp"
       ? "none"
-      : props.path === "/"
-      ? "flex"
-      : "none"};
+      : "flex"};
   flex-direction: row;
   gap: 16px;
   align-items: center;
