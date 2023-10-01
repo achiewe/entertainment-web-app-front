@@ -149,6 +149,7 @@ const TrendingMain = styled.div`
           align-items: center;
           background: rgba(6, 0, 27, 0.501);
           z-index: 2;
+          cursor: pointer;
         }
 
         .TrendTitleDiv {
