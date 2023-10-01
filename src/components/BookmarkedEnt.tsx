@@ -6,6 +6,8 @@ import Fullbook from "../../public/assets/icon-bookmark-full.svg";
 import playSvg from "../../public/assets/icon-play.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
+import axios from "axios";
+import { takeInfo } from "../App";
 
 const BookmarkedEnt = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -27,6 +29,24 @@ const BookmarkedEnt = (): JSX.Element => {
   const bookmarkedTvSeries = enjoyment
     .filter((bookmark) => bookmark.isBookmarked === true)
     .filter((bookmark) => bookmark.category === "TV Series");
+
+  const renewEnt = async (id: string, newIsBookmarked: boolean) => {
+    try {
+      console.log(
+        `Renewing entertainment with ID: ${id}, isBookmarked: ${newIsBookmarked}`
+      );
+      await axios.put(
+        `http://localhost:3000/changeBookmark/${clientEmail}/${id}`,
+        {
+          isBookmarked: newIsBookmarked,
+        }
+      );
+      console.log("Bookmark updated successfully");
+      takeInfo(clientEmail, logIn, dispatch);
+    } catch (error) {
+      console.log("Error updating bookmark:", error);
+    }
+  };
   return (
     <MainBookmarked>
       <h2> Bookmarked Movies</h2>
@@ -51,7 +71,6 @@ const BookmarkedEnt = (): JSX.Element => {
                 className="bookmarkImg"
                 onClick={async (e) => {
                   e.preventDefault();
-
                   const newIsBookmarked = !ent.isBookmarked;
                   await renewEnt(ent._id, newIsBookmarked);
                 }}
