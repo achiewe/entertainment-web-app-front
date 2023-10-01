@@ -17,7 +17,6 @@ const TrendingEnt = (): JSX.Element => {
     (ent: RootState) => ent.entertainment.entertainment
   );
 
-  console.log("i am", enjoyment);
   const isTrendFilter = enjoyment.filter((enjoy) => enjoy.isTrending === true);
 
   useEffect(() => {
