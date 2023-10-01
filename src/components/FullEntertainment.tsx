@@ -56,7 +56,7 @@ const FullEntertainment = (): JSX.Element => {
                 alt="entertainment image"
               />
               <div className="overlay">
-                <button className="playDiv">
+                <button className="playButton">
                   <img className="playSvg" src={playSvg} alt="play svg" />
                   <h3>Play </h3>
                 </button>
@@ -160,7 +160,7 @@ const EntertainmentCont = styled.div`
         rgba(0, 0, 0, 0.5) 100%
       );
 
-      .playDiv {
+      .playButton {
         width: 60px;
         height: 25px;
         border-radius: 28.5px;

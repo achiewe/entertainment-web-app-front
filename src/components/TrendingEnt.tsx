@@ -2,6 +2,7 @@ import styled from "styled-components";
 import fullBookTrend from "../../public/assets/icon-bookmark-full.svg";
 import emptyBookTrend from "../../public/assets/icon-bookmark-empty.svg";
 import dotSvg from "../../public/assets/Oval.svg";
+import playSvg from "../../public/assets/icon-play.svg";
 import serieSvgTrend from "../../public/assets/icon-nav-tv-series.svg";
 import movieSvgTrend from "../../public/assets/icon-nav-movies.svg";
 import { motion } from "framer-motion";
@@ -51,6 +52,13 @@ const TrendingEnt = (): JSX.Element => {
                   className="ImgTrend"
                   src={trend.thumbnail.trending.small}
                 />
+
+                <div className="overlay">
+                  <button className="playButton">
+                    <img className="playSvg" src={playSvg} alt="play svg" />
+                    <h3>Play </h3>
+                  </button>
+                </div>
 
                 <div className="trendingStructure">
                   <div className="bookmarkTrend">
@@ -195,6 +203,58 @@ const TrendingMain = styled.div`
           }
         }
       }
+    }
+
+    .overlay {
+      display: none;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
+
+      .playButton {
+        width: 80px;
+        height: 30px;
+        border-radius: 28.5px;
+        border: none;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        background: rgba(255, 255, 255, 0.25);
+
+        .playSvg {
+          width: 16px;
+          height: 16px;
+          z-index: 2;
+        }
+
+        h3 {
+          color: #fff;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+      }
+    }
+
+    .item:hover .overlay {
+      display: flex;
     }
   }
 `;
