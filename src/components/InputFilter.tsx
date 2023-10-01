@@ -13,7 +13,7 @@ const InputFilter = (): JSX.Element => {
             ? "Search for movies or TV series"
             : path === "/Movies"
             ? "Search for movies"
-            : path === "/TV Series"
+            : path === "/TVSeries"
             ? "Search for TV series"
             : path === "/Bookmarked"
             ? "Search for bookmarked shows"
