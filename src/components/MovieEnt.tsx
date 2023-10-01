@@ -96,6 +96,7 @@ const MainMovieCont = styled.div`
   align-items: flex-start;
   padding: 0 16px;
   gap: 24px;
+  padding-bottom: 61px;
 
   h2 {
     color: #fff;
