@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import logoSvg from "../../public/assets/logo.svg";
 import avatarImg from "../../public/assets/image-avatar.png";
+import defaultAvatarImg from "../../public/assets/user.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -76,7 +77,7 @@ const Header = (): JSX.Element => {
       </div>
       <img
         className="avatarImg"
-        src={avatarImg}
+        src={logIn ? avatarImg : defaultAvatarImg}
         alt="avatar image"
         onClick={() => {
           setOpenFrame(!openFrame);
