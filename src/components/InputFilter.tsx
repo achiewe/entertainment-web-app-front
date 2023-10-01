@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import SearchSvg from "../../public/assets/icon-search.svg";
+import { useNavigate } from "react-router-dom";
 
 const InputFilter = (): JSX.Element => {
   const path = window.location.pathname;
+  useNavigate();
   return (
     <InputContainer path={path}>
       <img className="searchSvg" src={SearchSvg} alt="search icon" />

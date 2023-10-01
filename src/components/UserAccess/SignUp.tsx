@@ -15,6 +15,7 @@ interface signProps {
 
 const SignUp = (): JSX.Element => {
   const navigate = useNavigate();
+  useNavigate();
 
   const {
     register,
