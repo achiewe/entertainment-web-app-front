@@ -17,6 +17,7 @@ import { RootState } from "./store/redux";
 import { setClientEmail } from "./store/ClientEmailSlice";
 import { setLogIn } from "./store/LoggedInSlice";
 import { Dispatch } from "redux";
+import BookmarkedEnt from "./components/BookmarkedEnt";
 
 export const takeInfo = async (
   clientEmail: string,
@@ -78,6 +79,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Movies" element={<MovieEnt />} />
           <Route path="/TVSeries" element={<TvSeriesEnt />} />
+          <Route path="/Bookmarked" element={<BookmarkedEnt />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
         </Routes>
