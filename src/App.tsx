@@ -3,6 +3,8 @@ import GlobalStyles from "./GlobalStyles";
 import Login from "./components/UserAccess/Login";
 import SignUp from "./components/UserAccess/SignUp";
 import Home from "./components/Home";
+import Header from "./components/Header";
+import InputFilter from "./components/InputFilter";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import entertainmentType from "../type";
@@ -68,6 +70,8 @@ function App() {
     <Router>
       <MainContainer>
         <GlobalStyles />
+        <Header />
+        <InputFilter />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />
@@ -83,6 +87,7 @@ const MainContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  gap: 24px;
   align-items: center;
   background-color: #10141e;
 `;

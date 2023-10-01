@@ -25,11 +25,12 @@ const InputFilter = (): JSX.Element => {
 };
 
 const InputContainer = styled.div`
-  width: 257px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 16px;
   align-items: center;
+  justify-content: flex-start;
   padding-left: 16px;
   .searchSvg {
     width: 24px;
