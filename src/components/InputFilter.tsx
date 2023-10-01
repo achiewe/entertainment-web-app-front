@@ -4,7 +4,7 @@ import SearchSvg from "../../public/assets/icon-search.svg";
 const InputFilter = (): JSX.Element => {
   const path = window.location.pathname;
   return (
-    <InputContainer>
+    <InputContainer path={path}>
       <img className="searchSvg" src={SearchSvg} alt="search icon" />
       <input
         type="text"
@@ -24,9 +24,16 @@ const InputFilter = (): JSX.Element => {
   );
 };
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<{ path: string }>`
   width: 100%;
-  display: flex;
+  display: ${(props) =>
+    props.path === "/Login"
+      ? "none"
+      : props.path === "/SignUp"
+      ? "none"
+      : props.path === "/"
+      ? "flex"
+      : "none"};
   flex-direction: row;
   gap: 16px;
   align-items: center;

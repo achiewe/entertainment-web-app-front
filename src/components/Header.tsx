@@ -110,7 +110,14 @@ const MainContainer = styled.header<{
   logIn: boolean;
 }>`
   width: 100%;
-  display: flex;
+  display: ${(props) =>
+    props.path === "/Login"
+      ? "none"
+      : props.path === "/SignUp"
+      ? "none"
+      : props.path === "/"
+      ? "flex"
+      : "none"};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
