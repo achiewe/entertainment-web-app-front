@@ -11,6 +11,7 @@ import axios from "axios";
 import { takeInfo } from "../App";
 import TrendingEnt from "./TrendingEnt";
 import { setEntertainment } from "../store/EntertainmentSlice";
+import { useEffect } from "react";
 
 const FullEntertainment = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -27,11 +28,13 @@ const FullEntertainment = (): JSX.Element => {
 
   const value = useSelector((user: RootState) => user.value.value);
 
-  const filterTitle = enjoyment.filter((ent) => {
-    return ent.title.toLowerCase().includes(value.toLowerCase());
-  });
+  useEffect(() => {
+    const filterTitle = enjoyment.filter((ent) => {
+      return ent.title.toLowerCase().includes(value.toLowerCase());
+    });
 
-  setEntertainment(filterTitle);
+    dispatch(setEntertainment(filterTitle));
+  }, [value]);
 
   const renewEnt = async (id: string, newIsBookmarked: boolean) => {
     try {

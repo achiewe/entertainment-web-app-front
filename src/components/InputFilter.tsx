@@ -1,13 +1,18 @@
 import styled from "styled-components";
 import SearchSvg from "../../public/assets/icon-search.svg";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setValue } from "../store/InputFilterSlice";
+import { RootState } from "../store/redux";
 
 const InputFilter = (): JSX.Element => {
   const path = window.location.pathname;
   const dispatch = useDispatch();
   useNavigate();
+
+  const value = useSelector((store: RootState) => store.value.value);
+
+  console.log(value);
   return (
     <InputContainer path={path}>
       <img className="searchSvg" src={SearchSvg} alt="search icon" />
