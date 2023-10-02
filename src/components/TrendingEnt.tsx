@@ -8,8 +8,10 @@ import movieSvgTrend from "../../public/assets/icon-nav-movies.svg";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
+import axios from "axios";
+import { takeInfo } from "../App";
 
 const TrendingEnt = (): JSX.Element => {
   const [width, setWidth] = useState<number | undefined>(0);
@@ -19,6 +21,32 @@ const TrendingEnt = (): JSX.Element => {
   );
 
   const isTrendFilter = enjoyment.filter((enjoy) => enjoy.isTrending === true);
+
+  const clientEmail = useSelector(
+    (user: RootState) => user.clientEmail.clientEmail
+  );
+
+  const logIn = useSelector((user: RootState) => user.logIn.logIn);
+
+  const dispatch = useDispatch();
+
+  const renewEnt = async (id: string, newIsBookmarked: boolean) => {
+    try {
+      console.log(
+        `Renewing entertainment with ID: ${id}, isBookmarked: ${newIsBookmarked}`
+      );
+      await axios.put(
+        `http://localhost:3000/changeBookmark/${clientEmail}/${id}`,
+        {
+          isBookmarked: newIsBookmarked,
+        }
+      );
+      console.log("Bookmark updated successfully");
+      takeInfo(clientEmail, logIn, dispatch);
+    } catch (error) {
+      console.log("Error updating bookmark:", error);
+    }
+  };
 
   useEffect(() => {
     const current = carousel.current;
@@ -63,6 +91,12 @@ const TrendingEnt = (): JSX.Element => {
                 <div className="trendingStructure">
                   <div className="bookmarkTrend">
                     <img
+                      onClick={async (e) => {
+                        e.preventDefault();
+
+                        const newIsBookmarked = !trend.isBookmarked;
+                        await renewEnt(trend._id, newIsBookmarked);
+                      }}
                       src={trend.isBookmarked ? fullBookTrend : emptyBookTrend}
                       alt="bookmark svg"
                     />
