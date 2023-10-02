@@ -27,8 +27,8 @@ const FullEntertainment = (): JSX.Element => {
 
   const value = useSelector((user: RootState) => user.value.value);
 
-  const filterTitle = enjoyment.filter((title) => {
-    return title.title.toLowerCase().includes(value.toLowerCase());
+  const filterTitle = enjoyment.filter((ent) => {
+    return ent.title.toLowerCase().includes(value.toLowerCase());
   });
 
   setEntertainment(filterTitle);
