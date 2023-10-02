@@ -10,6 +10,7 @@ import { RootState } from "../store/redux";
 import axios from "axios";
 import { takeInfo } from "../App";
 import TrendingEnt from "./TrendingEnt";
+import { setEntertainment } from "../store/EntertainmentSlice";
 
 const FullEntertainment = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -23,6 +24,14 @@ const FullEntertainment = (): JSX.Element => {
   );
 
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
+
+  const value = useSelector((user: RootState) => user.value.value);
+
+  const filterTitle = enjoyment.filter((title) => {
+    return title.title.toLowerCase().includes(value.toLowerCase());
+  });
+
+  setEntertainment(filterTitle);
 
   const renewEnt = async (id: string, newIsBookmarked: boolean) => {
     try {
