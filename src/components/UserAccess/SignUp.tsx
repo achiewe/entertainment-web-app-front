@@ -115,6 +115,10 @@ const MainContainer = styled.div<{ errorMsg: string }>`
   align-items: center;
   margin-top: 48px;
   gap: 58px;
+  @media (min-width: 768px) {
+    margin-top: 88px;
+    gap: 72px;
+  }
 
   .signUpCont {
     width: 327px;
@@ -124,6 +128,11 @@ const MainContainer = styled.div<{ errorMsg: string }>`
     display: flex;
     flex-direction: column;
     gap: 40px;
+    @media (min-width: 768px) {
+      width: 400px;
+      border-radius: 20px;
+      padding: 32px;
+    }
 
     input {
       width: 100%;
