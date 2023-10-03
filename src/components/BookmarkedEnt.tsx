@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
 import axios from "axios";
 import { takeInfo } from "../App";
+import { setEntertainment } from "../store/EntertainmentSlice";
+import { useEffect } from "react";
 
 const BookmarkedEnt = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -29,6 +31,16 @@ const BookmarkedEnt = (): JSX.Element => {
   const bookmarkedTvSeries = enjoyment
     .filter((bookmark) => bookmark.isBookmarked === true)
     .filter((bookmark) => bookmark.category === "TV Series");
+
+  const value = useSelector((user: RootState) => user.value.value);
+
+  useEffect(() => {
+    const filterTitle = enjoyment.filter((ent) => {
+      return ent.title.toLowerCase().includes(value.toLowerCase());
+    });
+
+    dispatch(setEntertainment(filterTitle));
+  }, [value]);
 
   const renewEnt = async (id: string, newIsBookmarked: boolean) => {
     try {
