@@ -53,6 +53,14 @@ const InputContainer = styled.div<{ path: string }>`
   .searchSvg {
     width: 24px;
     height: 24px;
+    @media (min-width: 768px) {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  @media (min-width: 768px) {
+    gap: 24px;
+    padding-left: 25px;
   }
 
   input {
@@ -64,6 +72,12 @@ const InputContainer = styled.div<{ path: string }>`
     font-weight: 300;
     line-height: normal;
     color: #ffffff;
+    @media (min-width: 768px) {
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
   }
 `;
 export default InputFilter;
