@@ -80,6 +80,10 @@ const TrendingEnt = (): JSX.Element => {
                   className="ImgTrend"
                   src={trend.thumbnail.trending.small}
                 />
+                <img
+                  className="ImgTrendTab"
+                  src={trend.thumbnail.trending.large}
+                />
 
                 <div className="overlay">
                   <button className="playButton">
@@ -136,6 +140,9 @@ const TrendingMain = styled.div`
   gap: 16px;
   align-items: flex-start;
   overflow: hidden;
+  @media (min-width: 768px) {
+    gap: 25px;
+  }
 
   h2 {
     color: #fff;
@@ -144,6 +151,13 @@ const TrendingMain = styled.div`
     font-weight: 300;
     line-height: normal;
     letter-spacing: -0.312px;
+    @media (min-width: 768px) {
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+      letter-spacing: -0.5px;
+    }
   }
 
   .carousel {
@@ -162,11 +176,28 @@ const TrendingMain = styled.div`
       height: 140px;
       border-radius: 8px;
       position: relative;
+      @media (min-width: 768px) {
+        width: 470px;
+        height: 230px;
+      }
 
       .ImgTrend {
         width: 100%;
         height: 100%;
         border-radius: 8px;
+        @media (min-width: 768px) {
+          display: none;
+        }
+      }
+
+      .ImgTrendTab {
+        display: none;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        @media (min-width: 768px) {
+          display: flex;
+        }
       }
 
       .trendingStructure {
@@ -181,6 +212,10 @@ const TrendingMain = styled.div`
         left: 0;
         right: 0;
         bottom: 0;
+        @media (min-width: 768px) {
+          padding: 16px 24px 24px 24px;
+          gap: 106px;
+        }
 
         .bookmarkTrend {
           width: 32px;
@@ -207,6 +242,9 @@ const TrendingMain = styled.div`
             justify-content: flex-start;
             flex-direction: row;
             gap: 6px;
+            @media (min-width: 768px) {
+              gap: 8px;
+            }
 
             h4 {
               color: #fff;
@@ -215,6 +253,12 @@ const TrendingMain = styled.div`
               font-weight: 300;
               line-height: normal;
               opacity: 0.75;
+              @media (min-width: 768px) {
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: normal;
+              }
             }
 
             .dot {
@@ -234,6 +278,12 @@ const TrendingMain = styled.div`
             font-style: normal;
             font-weight: 500;
             line-height: normal;
+            @media (min-width: 768px) {
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+            }
           }
         }
       }
@@ -270,11 +320,20 @@ const TrendingMain = styled.div`
         align-items: center;
         gap: 4px;
         background: rgba(255, 255, 255, 0.25);
+        @media (min-width: 768px) {
+          width: 120px;
+          height: 50px;
+          gap: 8px;
+        }
 
         .playSvg {
           width: 16px;
           height: 16px;
           z-index: 2;
+          @media (min-width: 768px) {
+            width: 24px;
+            height: 24px;
+          }
         }
 
         h3 {
@@ -283,6 +342,9 @@ const TrendingMain = styled.div`
           font-style: normal;
           font-weight: 500;
           line-height: normal;
+          @media (min-width: 768px) {
+            font-size: 16px;
+          }
         }
       }
     }
