@@ -11,7 +11,7 @@ import axios from "axios";
 import { takeInfo } from "../App";
 import TrendingEnt from "./TrendingEnt";
 import { setEntertainment } from "../store/EntertainmentSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const FullEntertainment = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -23,6 +23,8 @@ const FullEntertainment = (): JSX.Element => {
   const clientEmail = useSelector(
     (user: RootState) => user.clientEmail.clientEmail
   );
+
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
 
@@ -51,11 +53,21 @@ const FullEntertainment = (): JSX.Element => {
       takeInfo(clientEmail, logIn, dispatch);
     } catch (error) {
       console.log("Error updating bookmark:", error);
+      setErrorMessage(true);
     }
   };
+  useEffect(() => {
+    if (errorMessage) {
+      const timer = setTimeout(() => {
+        setErrorMessage(false);
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [errorMessage]);
 
   return (
-    <EntertainmentCont>
+    <EntertainmentCont errorMessage={errorMessage}>
       <TrendingEnt />
       <h2> Recommended for you</h2>
       <div className="recommendDiv">
@@ -109,7 +121,7 @@ const FullEntertainment = (): JSX.Element => {
   );
 };
 
-const EntertainmentCont = styled.div`
+const EntertainmentCont = styled.div<{ errorMessage: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -138,6 +150,8 @@ const EntertainmentCont = styled.div`
   .errorMsgBook {
     display: flex;
     align-items: center;
+    position: ${(props) => (props.errorMessage ? "absolute" : "fixed")};
+    right: ${(props) => (props.errorMessage ? "10px" : "-100%")};
     height: 35px;
     top: 10px;
     background-color: #fc4747;
