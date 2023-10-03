@@ -22,6 +22,8 @@ const TrendingEnt = (): JSX.Element => {
 
   const isTrendFilter = enjoyment.filter((enjoy) => enjoy.isTrending === true);
 
+  const leftConstraint = window.innerWidth >= 768 ? -1860 : -930;
+
   const clientEmail = useSelector(
     (user: RootState) => user.clientEmail.clientEmail
   );
@@ -71,7 +73,10 @@ const TrendingEnt = (): JSX.Element => {
         >
           <motion.div
             drag="x"
-            dragConstraints={{ right: 0, left: -930 }}
+            dragConstraints={{
+              right: 0,
+              left: leftConstraint,
+            }}
             className="innerCarousel"
           >
             {isTrendFilter.map((trend) => (
@@ -169,6 +174,9 @@ const TrendingMain = styled.div`
       display: flex;
       background-color: #10141e;
       gap: 12px;
+      @media (min-width: 768px) {
+        gap: 40px;
+      }
     }
 
     .item {
