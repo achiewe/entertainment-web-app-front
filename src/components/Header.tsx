@@ -122,6 +122,12 @@ const MainContainer = styled.header<{
   padding: 18px 16px;
   background-color: #161d2f;
   position: relative;
+  @media (min-width: 768px) {
+    width: 719px;
+    margin-top: 23px;
+    border-radius: 10px;
+    padding: 24px 16px 22px 24px;
+  }
 
   .frame {
     display: ${(props) => (props.openFrame ? "flex" : "none")};
@@ -136,6 +142,10 @@ const MainContainer = styled.header<{
     height: 90px;
     background-color: #161d2f;
     border-radius: 8px;
+    @media (min-width: 768px) {
+      width: 180px;
+      height: 100px;
+    }
 
     a {
       color: #fff;
@@ -161,6 +171,11 @@ const MainContainer = styled.header<{
       font-style: normal;
       font-weight: 300;
       line-height: normal;
+
+      @media (min-width: 768px) {
+        width: 100px;
+        height: 50px;
+      }
     }
 
     .signOut:hover {
@@ -177,6 +192,10 @@ const MainContainer = styled.header<{
     width: 25px;
     height: 20px;
     cursor: pointer;
+    @media (min-width: 768px) {
+      width: 32px;
+      height: 25.6px;
+    }
   }
 
   .controlPanel {
@@ -185,6 +204,9 @@ const MainContainer = styled.header<{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    @media (min-width: 768px) {
+      width: 172.92px;
+    }
 
     a {
       cursor: pointer;
@@ -220,6 +242,10 @@ const MainContainer = styled.header<{
     border: 1px solid #fff;
     border-radius: 24px;
     cursor: pointer;
+    @media (min-width: 768px) {
+      width: 32px;
+      height: 32px;
+    }
   }
 `;
 export default Header;
