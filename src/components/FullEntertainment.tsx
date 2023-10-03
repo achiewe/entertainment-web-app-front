@@ -101,6 +101,9 @@ const FullEntertainment = (): JSX.Element => {
             <h2> {ent.title}</h2>
           </div>
         ))}
+        <div className="errorMsgBook">
+          <p> Please log in to bookmark</p>
+        </div>
       </div>
     </EntertainmentCont>
   );
@@ -130,6 +133,29 @@ const EntertainmentCont = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px 15px;
+  }
+
+  .errorMsgBook {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    top: 10px;
+    background-color: #fc4747;
+    padding: 0 8px;
+    justify-content: center;
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    transition: 0.5s;
+
+    p {
+      color: #fff;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.312px;
+    }
   }
 
   .movieStructure {

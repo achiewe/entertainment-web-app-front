@@ -38,7 +38,6 @@ export const takeInfo = async (
     const url = "http://localhost:3000/takeEntertainment";
     try {
       const response = await axios.get<entertainmentType[]>(url);
-      console.log("API response:", response.data);
       // Assuming you have a setEntertainment action defined in your code
       dispatch(setEntertainment(response.data));
     } catch (error) {
