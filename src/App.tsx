@@ -95,6 +95,9 @@ const MainContainer = styled.div`
   gap: 24px;
   align-items: center;
   background-color: #10141e;
+  @media (min-width: 768px) {
+    gap: 33px;
+  }
 `;
 
 export default App;
