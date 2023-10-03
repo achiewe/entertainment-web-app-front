@@ -120,6 +120,10 @@ const MainLogin = styled.div<{ errorPassMsg: string; errorEmailMsg: string }>`
   align-items: center;
   gap: 58px;
   margin-top: 58px;
+  @media (min-width: 768px) {
+    margin-top: 80px;
+    gap: 72px;
+  }
 
   .loginCont {
     width: 327px;
@@ -129,6 +133,12 @@ const MainLogin = styled.div<{ errorPassMsg: string; errorEmailMsg: string }>`
     display: flex;
     flex-direction: column;
     gap: 40px;
+
+    @media (min-width: 768px) {
+      width: 400px;
+      padding: 32px;
+      border-radius: 20px;
+    }
 
     input {
       width: 100%;
