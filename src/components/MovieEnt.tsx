@@ -6,7 +6,7 @@ import Fullbook from "../../public/assets/icon-bookmark-full.svg";
 import playSvg from "../../public/assets/icon-play.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { takeInfo } from "../App";
 import { setEntertainment } from "../store/EntertainmentSlice";
@@ -21,6 +21,8 @@ const MovieEnt = (): JSX.Element => {
   const clientEmail = useSelector(
     (user: RootState) => user.clientEmail.clientEmail
   );
+
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
 
@@ -51,10 +53,22 @@ const MovieEnt = (): JSX.Element => {
       takeInfo(clientEmail, logIn, dispatch);
     } catch (error) {
       console.log("Error updating bookmark:", error);
+      setErrorMessage(true);
     }
   };
+
+  useEffect(() => {
+    if (errorMessage) {
+      const timer = setTimeout(() => {
+        setErrorMessage(false);
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [errorMessage]);
+
   return (
-    <MainMovieCont>
+    <MainMovieCont errorMessage={errorMessage}>
       <h2> Movies</h2>
       <div className="recommendDiv">
         {movieEnt.map((ent, index) => (
@@ -96,12 +110,16 @@ const MovieEnt = (): JSX.Element => {
             <h2> {ent.title}</h2>
           </div>
         ))}
+
+        <div className="errorMsgBook">
+          <p> Please log in to bookmark</p>
+        </div>
       </div>
     </MainMovieCont>
   );
 };
 
-const MainMovieCont = styled.div`
+const MainMovieCont = styled.div<{ errorMessage: boolean }>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -125,6 +143,31 @@ const MainMovieCont = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px 15px;
+  }
+
+  .errorMsgBook {
+    display: flex;
+    align-items: center;
+    position: ${(props) => (props.errorMessage ? "absolute" : "fixed")};
+    right: ${(props) => (props.errorMessage ? "10px" : "-100%")};
+    height: 35px;
+    top: 10px;
+    background-color: #fc4747;
+    padding: 0 8px;
+    justify-content: center;
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    transition: 0.5s;
+
+    p {
+      color: #fff;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.312px;
+    }
   }
 
   .movieStructure {
