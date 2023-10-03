@@ -6,8 +6,10 @@ import Fullbook from "../../public/assets/icon-bookmark-full.svg";
 import playSvg from "../../public/assets/icon-play.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
+import { useEffect } from "react";
 import axios from "axios";
 import { takeInfo } from "../App";
+import { setEntertainment } from "../store/EntertainmentSlice";
 
 const MovieEnt = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -22,7 +24,17 @@ const MovieEnt = (): JSX.Element => {
 
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
 
+  const value = useSelector((user: RootState) => user.value.value);
+
   const movieEnt = enjoyment.filter((movie) => movie.category === "Movie");
+
+  useEffect(() => {
+    const filterTitle = enjoyment.filter((ent) => {
+      return ent.title.toLowerCase().includes(value.toLowerCase());
+    });
+
+    dispatch(setEntertainment(filterTitle));
+  }, [value]);
 
   const renewEnt = async (id: string, newIsBookmarked: boolean) => {
     try {
