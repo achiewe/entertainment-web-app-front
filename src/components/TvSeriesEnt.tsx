@@ -7,6 +7,8 @@ import playSvg from "../../public/assets/icon-play.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
 import axios from "axios";
+import { setEntertainment } from "../store/EntertainmentSlice";
+import { useEffect } from "react";
 import { takeInfo } from "../App";
 
 const TvSeriesEnt = (): JSX.Element => {
@@ -23,6 +25,16 @@ const TvSeriesEnt = (): JSX.Element => {
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
 
   const serieEnt = enjoyment.filter((serie) => serie.category === "TV Series");
+
+  const value = useSelector((user: RootState) => user.value.value);
+
+  useEffect(() => {
+    const filterTitle = enjoyment.filter((ent) => {
+      return ent.title.toLowerCase().includes(value.toLowerCase());
+    });
+
+    dispatch(setEntertainment(filterTitle));
+  }, [value]);
 
   const renewEnt = async (id: string, newIsBookmarked: boolean) => {
     try {
