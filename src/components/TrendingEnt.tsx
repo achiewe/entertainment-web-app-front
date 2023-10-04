@@ -64,7 +64,7 @@ const TrendingEnt = (): JSX.Element => {
 
   return (
     <TrendingMain>
-      <h2> Trending</h2>
+      <h2 className="trendingTitle"> Trending</h2>
       {width !== undefined && (
         <motion.div
           ref={carousel}
@@ -149,7 +149,7 @@ const TrendingMain = styled.div`
     gap: 25px;
   }
 
-  h2 {
+  .trendingTitle {
     color: #fff;
     font-size: 20px;
     font-style: normal;
