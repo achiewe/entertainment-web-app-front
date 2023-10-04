@@ -73,15 +73,17 @@ function App() {
       <MainContainer>
         <GlobalStyles />
         <Header />
-        <InputFilter />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Movies" element={<MovieEnt />} />
-          <Route path="/TVSeries" element={<TvSeriesEnt />} />
-          <Route path="/Bookmarked" element={<BookmarkedEnt />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/SignUp" element={<SignUp />} />
-        </Routes>
+        <MainSection>
+          <InputFilter />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Movies" element={<MovieEnt />} />
+            <Route path="/TVSeries" element={<TvSeriesEnt />} />
+            <Route path="/Bookmarked" element={<BookmarkedEnt />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/SignUp" element={<SignUp />} />
+          </Routes>
+        </MainSection>
       </MainContainer>
     </Router>
   );
@@ -95,6 +97,25 @@ const MainContainer = styled.div`
   gap: 24px;
   align-items: center;
   background-color: #10141e;
+  @media (min-width: 768px) {
+    gap: 33px;
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 36px;
+    padding-left: 32px;
+  }
+`;
+
+const MainSection = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
   @media (min-width: 768px) {
     gap: 33px;
   }

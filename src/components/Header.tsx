@@ -128,6 +128,14 @@ const MainContainer = styled.header<{
     border-radius: 10px;
     padding: 24px 16px 22px 24px;
   }
+  @media (min-width: 1024px) {
+    width: 96px;
+    height: 960px;
+    flex-direction: column;
+    padding: 35px 28px 32px 28px;
+    border-radius: 20px;
+    margin-top: 32px;
+  }
 
   .frame {
     display: ${(props) => (props.openFrame ? "flex" : "none")};
