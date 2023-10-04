@@ -133,6 +133,10 @@ const EntertainmentCont = styled.div<{ errorMessage: boolean }>`
     padding: 0 25px;
     padding-bottom: 56px;
   }
+  @media (min-width: 1024px) {
+    padding: 0 0;
+    padding-bottom: 52px;
+  }
 
   h2 {
     color: #fff;
@@ -158,6 +162,9 @@ const EntertainmentCont = styled.div<{ errorMessage: boolean }>`
     gap: 16px 15px;
     @media (min-width: 768px) {
       gap: 24px 29px;
+    }
+    @media (min-width: 1024px) {
+      gap: 32px 40px;
     }
   }
 
