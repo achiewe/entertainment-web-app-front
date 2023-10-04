@@ -119,6 +119,10 @@ const MainContainer = styled.div<{ errorMsg: string }>`
     margin-top: 88px;
     gap: 72px;
   }
+  @media (min-width: 1024px) {
+    gap: 83px;
+    margin-top: 78px;
+  }
 
   .signUpCont {
     width: 327px;
