@@ -127,6 +127,10 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
   padding: 0 16px;
   gap: 24px;
   padding-bottom: 61px;
+  @media (min-width: 768px) {
+    padding: 0 25px;
+    padding-bottom: 56px;
+  }
 
   h2 {
     color: #fff;
@@ -135,6 +139,13 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
     font-weight: 300;
     line-height: normal;
     letter-spacing: -0.312px;
+    @media (min-width: 768px) {
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+      letter-spacing: -0.5px;
+    }
   }
 
   .recommendDiv {
@@ -143,6 +154,9 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px 15px;
+    @media (min-width: 768px) {
+      gap: 24px 29px;
+    }
   }
 
   .errorMsgBook {
@@ -175,6 +189,9 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
     flex-direction: column;
     position: relative;
     gap: 4px;
+    @media (min-width: 768px) {
+      gap: 5px;
+    }
 
     .imageDiv {
       width: 100%;
@@ -188,6 +205,10 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
         border-radius: 8px;
         position: relative;
         cursor: pointer;
+        @media (min-width: 768px) {
+          width: 220px;
+          height: 140px;
+        }
       }
     }
 
@@ -209,6 +230,9 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
         rgba(0, 0, 0, 0.5) 0%,
         rgba(0, 0, 0, 0.5) 100%
       );
+      @media (min-width: 768px) {
+        height: 140px;
+      }
 
       .playDiv {
         width: 60px;
@@ -221,11 +245,18 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
         align-items: center;
         gap: 4px;
         background: rgba(255, 255, 255, 0.25);
-
+        @media (min-width: 768px) {
+          width: 80px;
+          height: 40px;
+        }
         .playSvg {
           width: 16px;
           height: 16px;
           z-index: 2;
+          @media (min-width: 768px) {
+            width: 24px;
+            height: 24px;
+          }
         }
 
         h3 {
@@ -234,6 +265,9 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
           font-style: normal;
           font-weight: 500;
           line-height: normal;
+          @media (min-width: 768px) {
+            font-size: 14px;
+          }
         }
       }
     }
@@ -266,6 +300,9 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
       justify-content: flex-start;
       flex-direction: row;
       gap: 6px;
+      @media (min-width: 768px) {
+        gap: 8px;
+      }
 
       h4 {
         color: #fff;
@@ -274,16 +311,27 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
         font-weight: 300;
         opacity: 0.75;
         line-height: normal;
+        @media (min-width: 768px) {
+          font-size: 13px;
+        }
       }
 
       .dot {
         width: 2px;
         height: 2px;
+        @media (min-width: 768px) {
+          width: 3px;
+          height: 3px;
+        }
       }
 
       .movieSerielog {
         width: 10px;
         height: 10px;
+        @media (min-width: 768px) {
+          width: 12px;
+          height: 12px;
+        }
       }
     }
 
@@ -293,6 +341,9 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
       font-style: normal;
       font-weight: 500;
       line-height: normal;
+      @media (min-width: 768px) {
+        font-size: 18px;
+      }
     }
   }
 `;
