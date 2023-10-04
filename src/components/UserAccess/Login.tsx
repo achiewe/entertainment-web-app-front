@@ -125,6 +125,10 @@ const MainLogin = styled.div<{ errorPassMsg: string; errorEmailMsg: string }>`
     gap: 72px;
   }
 
+  @media (min-width: 1024px) {
+    gap: 83px;
+  }
+
   .loginCont {
     width: 327px;
     padding: 24px 24px 32px 24px;
