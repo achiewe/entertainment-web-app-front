@@ -119,6 +119,10 @@ const MainSection = styled.div`
   @media (min-width: 768px) {
     gap: 33px;
   }
+
+  @media (min-width: 1024px) {
+    margin-top: 64px;
+  }
 `;
 
 export default App;

@@ -62,6 +62,9 @@ const InputContainer = styled.div<{ path: string }>`
     gap: 24px;
     padding-left: 25px;
   }
+  @media (min-width: 1024px) {
+    padding-left: 0;
+  }
 
   input {
     background: none;
