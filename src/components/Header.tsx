@@ -155,6 +155,13 @@ const MainContainer = styled.header<{
       height: 100px;
     }
 
+    @media (min-width: 1024px) {
+      width: 100px;
+      height: 100px;
+      top: 1000px;
+      right: 0px;
+    }
+
     a {
       color: #fff;
       text-align: center;
@@ -183,6 +190,11 @@ const MainContainer = styled.header<{
       @media (min-width: 768px) {
         width: 100px;
         height: 50px;
+      }
+
+      @media (min-width: 1024px) {
+        width: 80px;
+        height: 40px;
       }
     }
 
@@ -214,6 +226,12 @@ const MainContainer = styled.header<{
     align-items: center;
     @media (min-width: 768px) {
       width: 172.92px;
+    }
+
+    @media (min-width: 1024px) {
+      flex-direction: column;
+      height: 200px;
+      width: 20px;
     }
 
     a {
@@ -253,6 +271,11 @@ const MainContainer = styled.header<{
     @media (min-width: 768px) {
       width: 32px;
       height: 32px;
+    }
+
+    @media (min-width: 1024px) {
+      width: 40px;
+      height: 40px;
     }
   }
 `;
