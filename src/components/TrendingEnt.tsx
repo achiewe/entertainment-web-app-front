@@ -170,6 +170,7 @@ const TrendingMain = styled.div`
     overflow-x: hidden;
     background-color: #10141e;
     @media (min-width: 1024px) {
+      width: 865px;
     }
 
     .innerCarousel {
@@ -187,6 +188,10 @@ const TrendingMain = styled.div`
       border-radius: 8px;
       position: relative;
       @media (min-width: 768px) {
+        width: 470px;
+        height: 230px;
+      }
+      @media (min-width: 1024px) {
         width: 470px;
         height: 230px;
       }
