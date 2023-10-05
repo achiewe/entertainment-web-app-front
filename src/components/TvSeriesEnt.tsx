@@ -157,6 +157,10 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
     @media (min-width: 768px) {
       gap: 24px 29px;
     }
+
+    @media (min-width: 1024px) {
+      gap: 32px 40px;
+    }
   }
 
   .errorMsgBook {
@@ -209,6 +213,11 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
           width: 220px;
           height: 140px;
         }
+
+        @media (min-width: 1024px) {
+          width: 280px;
+          height: 174px;
+        }
       }
     }
 
@@ -220,6 +229,7 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
       width: 100%;
       height: 110px;
       border-radius: 8px;
+      cursor: pointer;
       z-index: 1;
       top: 0;
       left: 0;
@@ -234,12 +244,17 @@ const MainSerieCont = styled.div<{ errorMessage: boolean }>`
         height: 140px;
       }
 
+      @media (min-width: 1024px) {
+        height: 174px;
+      }
+
       .playDiv {
         width: 60px;
         height: 25px;
         border-radius: 28.5px;
         border: none;
         outline: none;
+        cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
