@@ -169,9 +169,6 @@ const TrendingMain = styled.div`
     cursor: grab;
     overflow-x: hidden;
     background-color: #10141e;
-    @media (min-width: 1024px) {
-      width: 865px;
-    }
 
     .innerCarousel {
       display: flex;
@@ -179,6 +176,16 @@ const TrendingMain = styled.div`
       gap: 12px;
       @media (min-width: 768px) {
         gap: 40px;
+      }
+
+      @media (min-width: 1024px) {
+        width: 800px;
+      }
+      @media (min-width: 1220px) {
+        width: 1100px;
+      }
+      @media (min-width: 1400px) {
+        width: 100%;
       }
     }
 

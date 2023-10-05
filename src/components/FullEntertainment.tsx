@@ -217,6 +217,10 @@ const EntertainmentCont = styled.div<{ errorMessage: boolean }>`
           width: 220px;
           height: 140px;
         }
+        @media (min-width: 1024px) {
+          width: 280px;
+          height: 174px;
+        }
       }
     }
 
@@ -241,6 +245,9 @@ const EntertainmentCont = styled.div<{ errorMessage: boolean }>`
       );
       @media (min-width: 768px) {
         height: 140px;
+      }
+      @media (min-width: 1024px) {
+        height: 174px;
       }
 
       .playButton {
