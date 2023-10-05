@@ -259,6 +259,7 @@ const EntertainmentCont = styled.div<{ errorMessage: boolean }>`
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
         gap: 4px;
         background: rgba(255, 255, 255, 0.25);
         @media (min-width: 768px) {

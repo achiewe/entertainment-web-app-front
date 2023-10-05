@@ -157,6 +157,9 @@ const MainMovieCont = styled.div<{ errorMessage: boolean }>`
     @media (min-width: 768px) {
       gap: 24px 29px;
     }
+    @media (min-width: 1024px) {
+      gap: 32px 40px;
+    }
   }
 
   .errorMsgBook {
@@ -209,6 +212,10 @@ const MainMovieCont = styled.div<{ errorMessage: boolean }>`
           width: 220px;
           height: 140px;
         }
+        @media (min-width: 1024px) {
+          width: 280px;
+          height: 174px;
+        }
       }
     }
 
@@ -220,6 +227,7 @@ const MainMovieCont = styled.div<{ errorMessage: boolean }>`
       width: 100%;
       height: 110px;
       border-radius: 8px;
+      cursor: pointer;
       z-index: 1;
       top: 0;
       left: 0;
@@ -235,6 +243,10 @@ const MainMovieCont = styled.div<{ errorMessage: boolean }>`
         height: 140px;
       }
 
+      @media (min-width: 1024px) {
+        height: 174px;
+      }
+
       .playDiv {
         width: 60px;
         height: 25px;
@@ -244,6 +256,7 @@ const MainMovieCont = styled.div<{ errorMessage: boolean }>`
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
         gap: 4px;
         background: rgba(255, 255, 255, 0.25);
         @media (min-width: 768px) {
