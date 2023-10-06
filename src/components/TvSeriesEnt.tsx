@@ -7,7 +7,6 @@ import playSvg from "../../public/assets/icon-play.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
 import axios from "axios";
-import { setEntertainment } from "../store/EntertainmentSlice";
 import { useEffect, useState } from "react";
 import { takeInfo } from "../App";
 import { setFilteredEnt, setFilteredUndefined } from "../store/EntertSaveSlice";

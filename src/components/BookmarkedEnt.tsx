@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/redux";
 import axios from "axios";
 import { takeInfo } from "../App";
-import { setEntertainment } from "../store/EntertainmentSlice";
 import { useEffect } from "react";
 import { setFilteredEnt, setFilteredUndefined } from "../store/EntertSaveSlice";
 

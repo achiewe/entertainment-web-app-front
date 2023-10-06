@@ -9,7 +9,6 @@ import { RootState } from "../store/redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { takeInfo } from "../App";
-import { setEntertainment } from "../store/EntertainmentSlice";
 import { setFilteredEnt, setFilteredUndefined } from "../store/EntertSaveSlice";
 
 const MovieEnt = (): JSX.Element => {

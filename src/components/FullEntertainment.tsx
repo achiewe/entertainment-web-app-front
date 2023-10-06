@@ -10,7 +10,6 @@ import { RootState } from "../store/redux";
 import axios from "axios";
 import { takeInfo } from "../App";
 import TrendingEnt from "./TrendingEnt";
-import { setEntertainment } from "../store/EntertainmentSlice";
 import { useEffect, useState } from "react";
 import { setFilteredEnt, setFilteredUndefined } from "../store/EntertSaveSlice";
 
