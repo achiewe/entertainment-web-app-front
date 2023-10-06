@@ -36,6 +36,7 @@ const SignUp = (): JSX.Element => {
           email: email,
           password: password,
         });
+        console.log("asdasd");
         navigate("/Login");
       } catch (error) {
         const fault = error as any;
