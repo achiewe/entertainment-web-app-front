@@ -10,6 +10,7 @@ import axios from "axios";
 import { takeInfo } from "../App";
 import { setEntertainment } from "../store/EntertainmentSlice";
 import { useEffect } from "react";
+import { setFilteredEnt, setFilteredUndefined } from "../store/EntertSaveSlice";
 
 const BookmarkedEnt = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -32,14 +33,22 @@ const BookmarkedEnt = (): JSX.Element => {
     .filter((bookmark) => bookmark.isBookmarked === true)
     .filter((bookmark) => bookmark.category === "TV Series");
 
+  const bookmarkAll = enjoyment.filter(
+    (bookmark) => bookmark.isBookmarked === true
+  );
   const value = useSelector((user: RootState) => user.value.value);
 
+  const filterValue = useSelector(
+    (user: RootState) => user.filteredEnt.filtered
+  );
   useEffect(() => {
-    const filterTitle = enjoyment.filter((ent) => {
-      return ent.title.toLowerCase().includes(value.toLowerCase());
-    });
-
-    dispatch(setEntertainment(filterTitle));
+    let data = bookmarkAll;
+    if (value.length > 0) {
+      data = data.filter((item) =>
+        item.title.toLowerCase().includes(value.toLowerCase())
+      );
+      dispatch(setFilteredEnt(data));
+    } else dispatch(setFilteredUndefined());
   }, [value]);
 
   const renewEnt = async (id: string, newIsBookmarked: boolean) => {
@@ -63,7 +72,10 @@ const BookmarkedEnt = (): JSX.Element => {
     <MainBookmarked>
       <h2> Bookmarked Movies</h2>
       <div className="recommendDiv">
-        {bookmarkedMovie.map((ent, index) => (
+        {(filterValue === undefined
+          ? bookmarkedMovie
+          : filterValue.filter((bookmark) => bookmark.category === "Movie")
+        ).map((ent, index) => (
           <div key={index} className="movieStructure">
             <div className="imageDiv">
               <img
@@ -105,7 +117,10 @@ const BookmarkedEnt = (): JSX.Element => {
 
       <h2> Bookmarked TV Series</h2>
       <div className="recommendDiv">
-        {bookmarkedTvSeries.map((ent, index) => (
+        {(filterValue === undefined
+          ? bookmarkedTvSeries
+          : filterValue.filter((bookmark) => bookmark.category === "TV Series")
+        ).map((ent, index) => (
           <div key={index} className="movieStructure">
             <div className="imageDiv">
               <img

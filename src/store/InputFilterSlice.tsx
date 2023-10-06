@@ -5,7 +5,7 @@ export interface inputProps {
 }
 
 const initialState: inputProps = {
-  value: " ",
+  value: "",
 };
 
 const InputFilterSlice = createSlice({

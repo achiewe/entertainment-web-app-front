@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { takeInfo } from "../App";
 import { setEntertainment } from "../store/EntertainmentSlice";
+import { setFilteredEnt, setFilteredUndefined } from "../store/EntertSaveSlice";
 
 const MovieEnt = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -30,12 +31,20 @@ const MovieEnt = (): JSX.Element => {
 
   const movieEnt = enjoyment.filter((movie) => movie.category === "Movie");
 
-  useEffect(() => {
-    const filterTitle = enjoyment.filter((ent) => {
-      return ent.title.toLowerCase().includes(value.toLowerCase());
-    });
+  console.log(movieEnt);
 
-    dispatch(setEntertainment(filterTitle));
+  const filterValue = useSelector(
+    (user: RootState) => user.filteredEnt.filtered
+  );
+
+  useEffect(() => {
+    let data = movieEnt;
+    if (value.length > 0) {
+      data = data.filter((item) =>
+        item.title.toLowerCase().includes(value.toLowerCase())
+      );
+      dispatch(setFilteredEnt(data));
+    } else dispatch(setFilteredUndefined());
   }, [value]);
 
   const renewEnt = async (id: string, newIsBookmarked: boolean) => {
@@ -67,49 +76,52 @@ const MovieEnt = (): JSX.Element => {
     }
   }, [errorMessage]);
 
+  console.log(filterValue, "sasas");
   return (
     <MainMovieCont errorMessage={errorMessage}>
       <h2> Movies</h2>
       <div className="recommendDiv">
-        {movieEnt.map((ent, index) => (
-          <div key={index} className="movieStructure">
-            <div className="imageDiv">
-              <img
-                className="imgThumb"
-                src={ent.thumbnail.regular.small}
-                alt="entertainment image"
-              />
-              <div className="overlay">
-                <button className="playDiv">
-                  <img className="playSvg" src={playSvg} alt="play svg" />
-                  <h3>Play </h3>
-                </button>
+        {(filterValue === undefined ? movieEnt : filterValue).map(
+          (ent, index) => (
+            <div key={index} className="movieStructure">
+              <div className="imageDiv">
+                <img
+                  className="imgThumb"
+                  src={ent.thumbnail.regular.small}
+                  alt="entertainment image"
+                />
+                <div className="overlay">
+                  <button className="playDiv">
+                    <img className="playSvg" src={playSvg} alt="play svg" />
+                    <h3>Play </h3>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="bookmark">
-              <img
-                className="bookmarkImg"
-                onClick={async (e) => {
-                  e.preventDefault();
+              <div className="bookmark">
+                <img
+                  className="bookmarkImg"
+                  onClick={async (e) => {
+                    e.preventDefault();
 
-                  const newIsBookmarked = !ent.isBookmarked;
-                  await renewEnt(ent._id, newIsBookmarked);
-                }}
-                src={ent.isBookmarked === true ? Fullbook : emptybook}
-                alt="bookmark"
-              />
+                    const newIsBookmarked = !ent.isBookmarked;
+                    await renewEnt(ent._id, newIsBookmarked);
+                  }}
+                  src={ent.isBookmarked === true ? Fullbook : emptybook}
+                  alt="bookmark"
+                />
+              </div>
+              <div className="infoMovie">
+                <h4> {ent.year}</h4>
+                <img src={dotImg} className="dot" />
+                <img src={movieSvg} className="movieSerielog" />
+                <h4> {ent.category}</h4>
+                <img src={dotImg} className="dot" />
+                <h4> {ent.rating}</h4>
+              </div>
+              <h2> {ent.title}</h2>
             </div>
-            <div className="infoMovie">
-              <h4> {ent.year}</h4>
-              <img src={dotImg} className="dot" />
-              <img src={movieSvg} className="movieSerielog" />
-              <h4> {ent.category}</h4>
-              <img src={dotImg} className="dot" />
-              <h4> {ent.rating}</h4>
-            </div>
-            <h2> {ent.title}</h2>
-          </div>
-        ))}
+          )
+        )}
 
         <div className="errorMsgBook">
           <p> Please log in to bookmark</p>

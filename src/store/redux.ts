@@ -3,6 +3,7 @@ import EntertainmentSlice, { entertaiProps } from "./EntertainmentSlice";
 import clientEmailSlice, { userProps } from "./ClientEmailSlice";
 import LoggedInSlice, { logProps } from "./LoggedInSlice";
 import InputFilterSlice, { inputProps } from "./InputFilterSlice";
+import EntertSaveSlice, { FilteredEnt } from "./EntertSaveSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     clientEmail: clientEmailSlice,
     logIn: LoggedInSlice,
     value: InputFilterSlice,
+    filteredEnt: EntertSaveSlice,
   },
 });
 
@@ -18,6 +20,7 @@ export type RootState = {
   clientEmail: userProps;
   logIn: logProps;
   value: inputProps;
+  filteredEnt: FilteredEnt;
 };
 
 export default store;
