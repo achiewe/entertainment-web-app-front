@@ -69,7 +69,7 @@ const TrendingEnt = (): JSX.Element => {
         <motion.div
           ref={carousel}
           className="carousel"
-          whileDrag={{ cursor: "grabbing" }}
+          whileTap={{ cursor: "grabbing" }}
         >
           <motion.div
             drag="x"
