@@ -167,7 +167,7 @@ const TrendingMain = styled.div`
 
   .carousel {
     cursor: grab;
-    overflow-x: hidden;
+    overflow: hidden;
     background-color: #10141e;
 
     .innerCarousel {
