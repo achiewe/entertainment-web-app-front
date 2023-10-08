@@ -80,17 +80,19 @@ function App() {
   return (
     <Router>
       <MainContainer>
+        <GlobalStyles />
         {loading ? (
-          <GridLoader
-            color={"#FC4747"}
-            loading={loading}
-            size={30}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
+          <div className="loadingDiv">
+            <GridLoader
+              color={"#FC4747"}
+              loading={loading}
+              size={30}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          </div>
         ) : (
           <>
-            <GlobalStyles />
             <Header />
             <MainSection>
               <InputFilter />
@@ -129,6 +131,18 @@ const MainContainer = styled.div`
     gap: 36px;
     padding-left: 32px;
     padding-bottom: 150px;
+  }
+
+  .loadingDiv {
+    position: absolute;
+    left: 40%;
+    right: 50%;
+    bottom: 50%;
+    top: 50%;
+
+    @media (min-width: 1024px) {
+      left: 50%;
+    }
   }
 `;
 
