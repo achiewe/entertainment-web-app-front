@@ -26,7 +26,7 @@ export const takeInfo = async (
   dispatch: Dispatch
 ): Promise<void> => {
   if (logIn) {
-    const url = `entertainment-web-app-api-production-ada6.up.railway.app/user?email=${clientEmail}`;
+    const url = `https://entertainment-web-app-api-production-ada6.up.railway.app/user?email=${clientEmail}`;
 
     try {
       const response = await axios.get(url);
@@ -37,7 +37,7 @@ export const takeInfo = async (
     }
   } else {
     const url =
-      "entertainment-web-app-api-production-ada6.up.railway.app/takeEntertainment";
+      "https://entertainment-web-app-api-production-ada6.up.railway.app/takeEntertainment";
     try {
       const response = await axios.get<entertainmentType[]>(url);
       // Assuming you have a setEntertainment action defined in your code
