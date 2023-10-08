@@ -18,6 +18,8 @@ const Header = (): JSX.Element => {
 
   const dispatch = useDispatch();
 
+  const locationReload = "https://entertainment-web-app-front.vercel.app/";
+
   const navigate = useNavigate();
 
   const signOut = (): void => {
@@ -35,7 +37,7 @@ const Header = (): JSX.Element => {
         src={logoSvg}
         alt="logo icon"
         onClick={() => {
-          window.location.reload();
+          locationReload;
         }}
       />
       <div className="controlPanel">
