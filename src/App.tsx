@@ -18,7 +18,7 @@ import { setClientEmail } from "./store/ClientEmailSlice";
 import { setLogIn } from "./store/LoggedInSlice";
 import { Dispatch } from "redux";
 import BookmarkedEnt from "./components/BookmarkedEnt";
-import ClipLoader from "react-spinners/ClipLoader";
+import GridLoader from "react-spinners/GridLoader";
 
 export const takeInfo = async (
   clientEmail: string,
@@ -81,10 +81,10 @@ function App() {
     <Router>
       <MainContainer>
         {loading ? (
-          <ClipLoader
+          <GridLoader
             color={"#FC4747"}
             loading={loading}
-            size={150}
+            size={30}
             aria-label="Loading Spinner"
             data-testid="loader"
           />
@@ -117,6 +117,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   gap: 24px;
   align-items: center;
+  position: relative;
   background-color: #10141e;
   @media (min-width: 768px) {
     gap: 33px;
