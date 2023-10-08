@@ -74,7 +74,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 1000);
   }, [logIn]);
 
   return (
@@ -127,6 +127,7 @@ const MainContainer = styled.div`
     align-items: flex-start;
     gap: 36px;
     padding-left: 32px;
+    padding-bottom: 150px;
   }
 `;
 
