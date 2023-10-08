@@ -142,6 +142,9 @@ const MainMovieCont = styled.div<{ errorMessage: boolean }>`
     padding: 0 25px;
     padding-bottom: 56px;
   }
+  @media (min-width: 1024px) {
+    padding: 0 0;
+  }
 
   h2 {
     color: #fff;
