@@ -36,10 +36,13 @@ const Login = (): JSX.Element => {
     const password = data.password;
     const logIn = async () => {
       try {
-        await axios.post("http://localhost:3000/Validate", {
-          email: email,
-          password: password,
-        });
+        await axios.post(
+          "entertainment-web-app-api-production-ada6.up.railway.app/Validate",
+          {
+            email: email,
+            password: password,
+          }
+        );
 
         dispatch(setLogIn(true));
         dispatch(setClientEmail(email));

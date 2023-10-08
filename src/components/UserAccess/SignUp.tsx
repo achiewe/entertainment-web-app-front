@@ -32,10 +32,13 @@ const SignUp = (): JSX.Element => {
     const password = data.password;
     const produceUser = async (): Promise<void> => {
       try {
-        await axios.post("http://localhost:3000/Signup", {
-          email: email,
-          password: password,
-        });
+        await axios.post(
+          "entertainment-web-app-api-production-ada6.up.railway.app/Signup",
+          {
+            email: email,
+            password: password,
+          }
+        );
         console.log("asdasd");
         navigate("/Login");
       } catch (error) {
