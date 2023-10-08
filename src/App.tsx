@@ -12,12 +12,13 @@ import axios from "axios";
 import entertainmentType from "../type";
 import { useDispatch, useSelector } from "react-redux";
 import { setEntertainment } from "./store/EntertainmentSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { RootState } from "./store/redux";
 import { setClientEmail } from "./store/ClientEmailSlice";
 import { setLogIn } from "./store/LoggedInSlice";
 import { Dispatch } from "redux";
 import BookmarkedEnt from "./components/BookmarkedEnt";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export const takeInfo = async (
   clientEmail: string,
@@ -66,24 +67,44 @@ function App() {
     takeInfo(clientEmail, logIn, dispatch);
   }, [logIn]);
 
-  console.log(logIn);
+  //for loading spinner
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, [logIn]);
 
   return (
     <Router>
       <MainContainer>
-        <GlobalStyles />
-        <Header />
-        <MainSection>
-          <InputFilter />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Movies" element={<MovieEnt />} />
-            <Route path="/TVSeries" element={<TvSeriesEnt />} />
-            <Route path="/Bookmarked" element={<BookmarkedEnt />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/SignUp" element={<SignUp />} />
-          </Routes>
-        </MainSection>
+        {loading ? (
+          <ClipLoader
+            color={"#FC4747"}
+            loading={loading}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        ) : (
+          <>
+            <GlobalStyles />
+            <Header />
+            <MainSection>
+              <InputFilter />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/Movies" element={<MovieEnt />} />
+                <Route path="/TVSeries" element={<TvSeriesEnt />} />
+                <Route path="/Bookmarked" element={<BookmarkedEnt />} />
+                <Route path="/Login" element={<Login />} />
+                <Route path="/SignUp" element={<SignUp />} />
+              </Routes>
+            </MainSection>
+          </>
+        )}
       </MainContainer>
     </Router>
   );
