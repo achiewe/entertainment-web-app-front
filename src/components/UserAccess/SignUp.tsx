@@ -33,7 +33,7 @@ const SignUp = (): JSX.Element => {
     const produceUser = async (): Promise<void> => {
       try {
         await axios.post(
-          "entertainment-web-app-api-production-ada6.up.railway.app/Signup",
+          "https://entertainment-web-app-api-production-ada6.up.railway.app/Signup",
           {
             email: email,
             password: password,

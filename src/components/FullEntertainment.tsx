@@ -50,7 +50,7 @@ const FullEntertainment = (): JSX.Element => {
         `Renewing entertainment with ID: ${id}, isBookmarked: ${newIsBookmarked}`
       );
       await axios.put(
-        `entertainment-web-app-api-production-ada6.up.railway.app/changeBookmark/${clientEmail}/${id}`,
+        `https://entertainment-web-app-api-production-ada6.up.railway.app/changeBookmark/${clientEmail}/${id}`,
         {
           isBookmarked: newIsBookmarked,
         }

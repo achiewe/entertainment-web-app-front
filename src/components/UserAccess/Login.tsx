@@ -37,7 +37,7 @@ const Login = (): JSX.Element => {
     const logIn = async () => {
       try {
         await axios.post(
-          "entertainment-web-app-api-production-ada6.up.railway.app/Validate",
+          "https://entertainment-web-app-api-production-ada6.up.railway.app/Validate",
           {
             email: email,
             password: password,
