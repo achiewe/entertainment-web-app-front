@@ -336,12 +336,14 @@ const EntertainmentCont = styled.div<{ errorMessage: boolean }>`
       display: flex;
       justify-content: center;
       align-items: center;
-      background: rgba(6, 0, 27, 0.501);
+      /* background: rgba(6, 0, 27, 0.501); */
+      background: black;
       z-index: 2;
       cursor: pointer;
+    }
 
-      .bookmarkImg {
-      }
+    .bookmark:hover {
+      background: "#FC4747";
     }
 
     .infoMovie {
