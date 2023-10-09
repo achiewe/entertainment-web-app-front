@@ -241,6 +241,10 @@ const TrendingMain = styled.div`
           cursor: pointer;
         }
 
+        .bookmarkTrend:hover {
+          background: rgb(252, 71, 71);
+        }
+
         .TrendTitleDiv {
           display: flex;
           flex-direction: column;
