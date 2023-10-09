@@ -159,8 +159,9 @@ const MainContainer = styled.header<{
     @media (min-width: 1024px) {
       width: 100px;
       height: 100px;
-      top: 1000px;
-      right: 0px;
+      top: 860px;
+      right: -112px;
+      z-index: 2;
     }
 
     a {
@@ -172,6 +173,12 @@ const MainContainer = styled.header<{
       text-decoration: none;
       font-weight: 300;
       line-height: normal;
+      background-color: #fc4747;
+      width: 80px;
+      height: 20px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
     }
 
     .signOut {
@@ -205,6 +212,7 @@ const MainContainer = styled.header<{
     }
 
     a:hover {
+      background-color: #fff;
       color: #fc4747;
     }
   }
