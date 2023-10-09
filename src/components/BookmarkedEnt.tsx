@@ -327,9 +327,10 @@ const MainBookmarked = styled.div`
       background: rgba(6, 0, 27, 0.501);
       z-index: 2;
       cursor: pointer;
+    }
 
-      .bookmarkImg {
-      }
+    .bookmark:hover {
+      background: rgb(252, 71, 71);
     }
 
     .infoMovie {
