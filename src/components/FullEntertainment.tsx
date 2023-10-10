@@ -24,6 +24,7 @@ const FullEntertainment = (): JSX.Element => {
     (user: RootState) => user.clientEmail.clientEmail
   );
 
+  //for error message
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
