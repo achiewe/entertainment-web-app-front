@@ -27,7 +27,7 @@ const FullEntertainment = (): JSX.Element => {
   //for error message
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
-  //
+  //for save login
   const logIn = useSelector((user: RootState) => user.logIn.logIn);
 
   //for save inpput value
