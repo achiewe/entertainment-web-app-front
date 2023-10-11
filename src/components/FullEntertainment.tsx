@@ -33,6 +33,7 @@ const FullEntertainment = (): JSX.Element => {
   //for save inpput value
   const value = useSelector((user: RootState) => user.value.value);
 
+  //save filter value
   const filterValue = useSelector(
     (user: RootState) => user.filteredEnt.filtered
   );
