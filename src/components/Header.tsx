@@ -20,6 +20,7 @@ const Header = (): JSX.Element => {
 
   const navigate = useNavigate();
 
+  // here is commnet what should happend when onclick on the signout button
   const signOut = (): void => {
     dispatch(setLogIn(false));
     dispatch(setClientEmail(""));
