@@ -158,17 +158,17 @@ const MainContainer = styled.header<{
     }
 
     @media (min-width: 1024px) {
-      width: 100px;
-      height: 100px;
-      top: 860px;
-      right: -112px;
+      width: 120px;
+      height: 120px;
+      top: 840px;
+      right: -130px;
       z-index: 2;
     }
 
     a {
       color: #fff;
       text-align: center;
-      font-size: 15px;
+      font-size: 16px;
       font-style: normal;
       cursor: pointer;
       text-decoration: none;
@@ -176,7 +176,8 @@ const MainContainer = styled.header<{
       line-height: normal;
       background-color: #fc4747;
       width: 80px;
-      height: 20px;
+      height: 40px;
+      display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 8px;
