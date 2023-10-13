@@ -36,6 +36,7 @@ const MovieEnt = (): JSX.Element => {
     (user: RootState) => user.filteredEnt.filtered
   );
 
+  // filter movie ent
   useEffect(() => {
     let data = movieEnt;
     if (value.length > 0) {
