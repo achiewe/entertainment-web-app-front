@@ -50,6 +50,7 @@ const TrendingEnt = (): JSX.Element => {
     }
   };
 
+  // to work carousel size and save it in state
   useEffect(() => {
     const current = carousel.current;
     if (current) {
