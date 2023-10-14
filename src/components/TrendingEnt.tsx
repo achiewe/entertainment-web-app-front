@@ -32,6 +32,7 @@ const TrendingEnt = (): JSX.Element => {
 
   const dispatch = useDispatch();
 
+  // add bookmark function
   const renewEnt = async (id: string, newIsBookmarked: boolean) => {
     try {
       console.log(
