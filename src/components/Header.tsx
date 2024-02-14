@@ -64,6 +64,7 @@ const Header = (): JSX.Element => {
         <Link to="/TVSeries" className="TVSeriesLink">
           <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
             <path
+              style={{ fill: path === "/TVSeries" ? "white" : "" }}
               d="M20 4.481H9.08l2.7-3.278L10.22 0 7 3.909 3.78.029 2.22 1.203l2.7 3.278H0V20h20V4.481Zm-8 13.58H2V6.42h10v11.64Zm5-3.88h-2v-1.94h2v1.94Zm0-3.88h-2V8.36h2v1.94Z"
               fill="#5A698F"
             />
@@ -73,6 +74,7 @@ const Header = (): JSX.Element => {
         <Link to="/Bookmarked" className="BookmarkedLink">
           <svg width="17" height="20" xmlns="http://www.w3.org/2000/svg">
             <path
+              style={{ fill: path === "/Bookmarked" ? "white" : "" }}
               d="M15.387 0c.202 0 .396.04.581.119.291.115.522.295.694.542.172.247.258.52.258.82v17.038c0 .3-.086.573-.258.82a1.49 1.49 0 0 1-.694.542 1.49 1.49 0 0 1-.581.106c-.423 0-.79-.141-1.098-.423L8.46 13.959l-5.83 5.605c-.317.29-.682.436-1.097.436-.202 0-.396-.04-.581-.119a1.49 1.49 0 0 1-.694-.542A1.402 1.402 0 0 1 0 18.52V1.481c0-.3.086-.573.258-.82A1.49 1.49 0 0 1 .952.119C1.137.039 1.33 0 1.533 0h13.854Z"
               fill="#5A698F"
             />
@@ -254,24 +256,8 @@ const MainContainer = styled.header<{
       }
     }
 
-    .homeLink svg path {
-      fill: ${(props) => (props.path === "/" ? "#FFFFFF" : "")};
-    }
-
-    .moviesLink svg path {
-      fill: ${(props) => (props.path === "/Movies" ? "#FFFFFF" : "")};
-    }
-
-    .TVSeriesLink svg path {
-      fill: ${(props) => (props.path === "/TVSeries" ? "#FFFFFF" : "")};
-    }
-
     .BookmarkedLink {
       display: ${(props) => (props.logIn ? "flex" : "none")};
-    }
-
-    .BookmarkedLink svg path {
-      fill: ${(props) => (props.path === "/Bookmarked" ? "#FFFFFF" : "")};
     }
   }
 
